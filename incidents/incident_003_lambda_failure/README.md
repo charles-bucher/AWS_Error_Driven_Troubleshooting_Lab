@@ -1,5 +1,3 @@
-I'll rewrite this as a comprehensive Level 9 cloud support incident report for Lambda failures:
-
 INCIDENT REPORT: incident_003_lambda_failure
 Incident Summary
 Incident ID: INC-003-LAMBDA-FAIL
