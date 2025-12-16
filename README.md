@@ -1,134 +1,127 @@
- AWS Error-Driven Troubleshooting Lab
+# AWS Error Driven Troubleshooting Lab
+# AWS Error Driven Troubleshooting Lab
 
-![Python](https://img.shields.io/badge/python-3.14+-blue)
-![Boto3](https://img.shields.io/badge/boto3-installed-brightgreen)
+![GitHub last commit](https://img.shields.io/github/last-commit/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
+![GitHub repo size](https://img.shields.io/github/repo-size/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
+![GitHub issues](https://img.shields.io/github/issues/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
+![GitHub license](https://img.shields.io/github/license/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
+![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python)
+![Terraform](https://img.shields.io/badge/Terraform-623CE4?logo=terraform&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazon-aws&logoColor=FF9900)
 
-## Overview
-This repository is a hands-on **AWS Error-Driven Troubleshooting Lab**.  
-It simulates real-world AWS incidents so you can **diagnose, remediate, and document failures safely**.  
+![AWS Lab Banner](path/to/banner.png)
 
-⚠️ **Warning:** These labs are intentionally destructive. Resources will be created, broken, and torn down. **AWS charges may apply** if resources are left running.
+## 🚀 Overview
+The **AWS Error Driven Troubleshooting Lab** is a hands-on simulation environment designed to teach real-world incident response and troubleshooting skills in AWS. This lab focuses on:
+
+- Identifying and diagnosing cloud infrastructure issues
+- Analyzing logs, metrics, and alerts
+- Implementing remediation and preventive measures
+- Learning AWS best practices for fault-tolerant systems
+
+This lab is perfect for aspiring **AWS Cloud Support Engineers, CloudOps, and Site Reliability Engineers**.
 
 ---
 
-## Incident Scenarios
-
-| Incident ID | Summary | Status |
-|------------|---------|-------|
-| `incident_001_ec2_unreachable` | EC2 instance cannot be reached over SSH | ✅ Complete |
-| `incident_002_s3_permission` | Misconfigured S3 bucket policy blocking access | ⚠️ In Progress |
-| `incident_003_lambda_failure` | Lambda function throwing runtime errors | ⚠️ In Progress |
-| `incident_004_custom` | Custom incident for testing your own failures | 🛠 Placeholder |
+## 🧰 Tech Stack
+| Technology | Purpose |
+|------------|---------|
+| AWS EC2 | Compute instances for simulations |
+| AWS S3 | Storage and logging |
+| AWS Lambda | Automation & remediation scripts |
+| AWS CloudWatch | Monitoring, metrics, and alerts |
+| Python 🐍 | Scripting and automation |
+| Terraform | Infrastructure as code setup |
 
 ---
 
-## Lab Structure
+## 🎯 Key Features
+- **Pre-Broken Environment:** Every lab environment is intentionally misconfigured to simulate real-world errors.  
+- **Step-by-Step Error Analysis:** Learn root cause analysis using logs, alerts, and metrics.  
+- **Automated Remediation:** Practice writing scripts to automatically remediate common AWS issues.  
+- **Preventive Strategies:** Implement best practices to prevent future failures.  
 
+---
+
+## 📂 Repository Structure
 AWS_Error_Driven_Troubleshooting_Lab/
-├─ incidents/
-│ ├─ incident_001_ec2_unreachable/
-│ │ ├─ scripts/ # deploy, break, collect_evidence, teardown
-│ │ ├─ evidence/
-│ │ │ └─ screenshots/ # visual proof
-│ │ └─ README.md # incident summary
-├─ docs/
-├─ templates/
-├─ scripts/
-├─ config/
-└─ create_lab_structure.py
+│
+├── README.md # This documentation
+├── infrastructure/ # Terraform scripts for lab setup
+├── scripts/ # Python and shell automation scripts
+├── screenshots/ # Screenshots of lab results
+├── diagrams/ # Architecture and workflow diagrams
+└── docs/ # Detailed guides and notes
 
 yaml
 Copy code
 
-**Notes:**
-- Scripts: `deploy.py`, `break.py`, `collect_evidence.py`, `teardown.py`.  
-- Evidence folder: logs, CloudWatch exports, screenshots.  
-- README per incident: summarize problem, triage, root cause, resolution, lessons learned.
+---
+
+## 🖼️ Screenshots
+**Example: EC2 misconfiguration detection**
+![EC2 Error Screenshot](screenshots/ec2_error.png)
+
+**CloudWatch Metrics Dashboard**
+![CloudWatch Dashboard](screenshots/cloudwatch_metrics.png)
 
 ---
 
-## How to Run
+## 📊 Architecture Diagram
+```mermaid
+flowchart TD
+    A[User] -->|Interacts| B[EC2 Instance]
+    B --> C[CloudWatch Logs & Metrics]
+    C --> D[Python Remediation Script]
+    D --> B
+    B --> E[S3 for logs]
+    C --> F[AWS Lambda Automation]
+📖 How to Use
+Clone the repository:
 
-1. **Clone the repo**
-```bash
+bash
+Copy code
 git clone https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab.git
 cd AWS_Error_Driven_Troubleshooting_Lab
-Create lab structure
+Deploy the lab environment:
 
 bash
 Copy code
-python create_lab_structure.py
-Spin up incidents
+cd infrastructure
+terraform init
+terraform apply
+Analyze errors in EC2, Lambda, and CloudWatch.
 
-bash
-Copy code
-python spin_incidents.py
-⚠️ Caution: This creates live AWS resources. Charges may apply.
+Run remediation scripts from scripts/.
 
-Tear down all resources
+Document your findings in docs/.
 
-powershell
-Copy code
-# PowerShell
-.\terminate_all_aws.ps1
-Evidence Tracking
-Use screenshots and logs as proof of work.
-Example badges:
+💡 Learning Outcomes
+By completing this lab, you will be able to:
 
+Diagnose AWS service failures and misconfigurations
 
+Write automation scripts for remediation
 
+Implement monitoring and alerting best practices
 
+Understand fault tolerance and resilience in cloud systems
 
-Screenshots naming convention:
+🔗 References
+AWS Documentation
 
-python-repl
-Copy code
-screenshot_001_instances_info.png
-screenshot_002_security_groups.png
-screenshot_003_vpc_creation.png
-...
-Reference them in README for visual proof:
+Terraform Docs
 
-markdown
-Copy code
-![EC2 Instance Info](incidents/incident_001_ec2_unreachable/evidence/screenshots/screenshot_001_instances_info.png)
-Lessons Learned
-AWS breaks in unpredictable ways; hands-on practice accelerates learning.
+Python Official
 
-Always tear down resources to avoid unexpected bills.
+⭐ Contributing
+Contributions are welcome! Please submit pull requests for:
 
-IAM & permissions mistakes are your first lesson.
+Additional broken scenarios
 
-Documentation + screenshots matter—they are proof of skill, not decoration.
+New remediation scripts
 
-Requirements
-Python 3.14+
+Updated diagrams or screenshots
 
-boto3 (install via pip install boto3)
-
-AWS CLI configured
-
-PowerShell (for teardown scripts)
-
-Basic AWS knowledge: EC2, VPC, Subnets, IGW, SG, S3, Lambda
-
-Contributing
-Keep incidents consistent in structure.
-
-Include README.md and evidence/screenshots.
-
-Never commit AWS credentials or private keys.
-
-Author
-Charles Bucher – Cloud Support / DevOps self-taught – GitHub
-
-Disclaimer
-This lab is for learning only. Running scripts can create billable AWS resources. Always clean up.
-
-About
-Intentionally broken AWS scenarios for hands-on troubleshooting using real cloud support workflows. Focus on logs, metrics, root cause analysis, remediation, and prevention, not tutorials.
-
-Topics
-aws cloud aws-lambda aws-s3 aws-ec2 aws-dynamodb aws-cloud cloud-support aws-automation cloud-ops error-driven-learning
----
-
+⚡ License
+MIT License © Charles Bucher
