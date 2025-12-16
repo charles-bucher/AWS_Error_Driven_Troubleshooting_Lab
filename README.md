@@ -10,7 +10,7 @@
 
 ## 📊 Architecture
 
-![AWS Error Driven Lab Architecture](./aws-error-driven-lab-architecture.png)
+![AWS Error Driven Lab Architecture](./diagrams/aws-error-driven-lab-architecture.png)
 
 ## 🚀 Overview
 
@@ -53,7 +53,8 @@ This lab is perfect for aspiring **AWS Cloud Support Engineers, CloudOps, and Si
 AWS_Error_Driven_Troubleshooting_Lab/
 │
 ├── README.md                         # This documentation
-├── aws-error-driven-lab-architecture.png  # Architecture diagram
+├── diagrams/                         # Architecture diagrams
+│   └── aws-error-driven-lab-architecture.png
 ├── incidents/                        # Individual incident scenarios
 │   ├── incident_001_ec2_unreachable/
 │   │   ├── scripts/         # deploy.py, break.py, collect_evidence.py, teardown.py
