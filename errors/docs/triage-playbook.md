@@ -74,3 +74,6 @@ This playbook provides step-by-step guidance for triaging AWS incidents, identif
 ```bash
 aws ec2 describe-instances
 aws ec2 describe-security-groups
+aws s3 ls
+aws s3 ls
+aws s3api get-bucket-policy --bucket <bucket-name>

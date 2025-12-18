@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Error-Driven Troubleshooting Lab - Architecture Diagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #232F3E 0%, #1a242f 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #FF9900;
+        }
+        
+        .header h1 {
+            color: #232F3E;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #687078;
+            font-size: 16px;
+        }
+        
+        .diagram-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 20px 0;
+        }
+        
+        .aws-region {
+            border: 3px dashed #FF9900;
+            border-radius: 12px;
+            padding: 30px;
+            background: white;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .region-label {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #FF9900;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .vpc-container {
+            border: 2px solid #00A4A6;
+            border-radius: 8px;
+            padding: 25px;
+            background: #f0f9ff;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .vpc-label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #00A4A6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .subnet-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .subnet {
+            flex: 1;
+            min-width: 280px;
+            border: 2px solid #545B64;
+            border-radius: 6px;
+            padding: 20px;
+            background: white;
+            position: relative;
+        }
+        
+        .subnet-label {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: #545B64;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .service-box {
+            background: white;
+            border: 2px solid #FF9900;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,153,0,0.3);
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            background: #FF9900;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .service-name {
+            font-weight: 700;
+            color: #232F3E;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .service-desc {
+            font-size: 11px;
+            color: #687078;
+            line-height: 1.4;
+        }
+        
+        .error-badge {
+            display: inline-block;
+            background: #D13212;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .success-badge {
+            display: inline-block;
+            background: #1D8102;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            margin: 20px 0;
+            color: #687078;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .external-user {
+            background: #232F3E;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .legend-title {
+            font-weight: 700;
+            color: #232F3E;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .troubleshooting-section {
+            background: #fff3cd;
+            border-left: 4px solid #FF9900;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .troubleshooting-title {
+            font-weight: 700;
+            color: #232F3E;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .error-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .error-list li {
+            padding: 8px 0;
+            color: #545B64;
+            font-size: 14px;
+        }
+        
+        .error-list li:before {
+            content: "⚠️ ";
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .subnet-row {
+                flex-direction: column;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AWS Error-Driven Troubleshooting Lab</h1>
+            <p>Architecture Diagram - Cloud Infrastructure & Error Scenarios</p>
+            <p style="margin-top: 5px; font-size: 14px; color: #FF9900;">By Charles Bucher</p>
+        </div>
+        
+        <div class="diagram-container">
+            <!-- External User -->
+            <div class="external-user">
+                🌐 External Users / Internet
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- AWS Region -->
+            <div class="aws-region">
+                <div class="region-label">AWS Region: us-east-1</div>
+                
+                <!-- Internet Gateway -->
+                <div class="service-box">
+                    <div class="service-icon">IGW</div>
+                    <div class="service-name">Internet Gateway</div>
+                    <div class="service-desc">Entry point for internet traffic</div>
+                    <div class="error-badge">Error: Not attached to VPC</div>
+                </div>
+                
+                <div class="flow-arrow">↓</div>
+                
+                <!-- VPC -->
+                <div class="vpc-container">
+                    <div class="vpc-label">VPC: 10.0.0.0/16</div>
+                    
+                    <!-- Route Table -->
+                    <div class="service-box">
+                        <div class="service-icon">RT</div>
+                        <div class="service-name">Route Table</div>
+                        <div class="service-desc">Controls traffic routing</div>
+                        <div class="error-badge">Error: Missing route to IGW</div>
+                    </div>
+                    
+                    <!-- Subnets -->
+                    <div class="subnet-row">
+                        <!-- Public Subnet -->
+                        <div class="subnet">
+                            <div class="subnet-label">Public Subnet (AZ-1a)</div>
+                            
+                            <div class="service-box">
+                                <div class="service-icon">ALB</div>
+                                <div class="service-name">Application Load Balancer</div>
+                                <div class="service-desc">Distributes incoming traffic</div>
+                                <div class="error-badge">Error: Target group unhealthy</div>
+                            </div>
+                            
+                            <div class="service-box">
+                                <div class="service-icon">NAT</div>
+                                <div class="service-name">NAT Gateway</div>
+                                <div class="service-desc">Outbound internet for private subnet</div>
+                                <div class="success-badge">✓ Configured</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Private Subnet -->
+                        <div class="subnet">
+                            <div class="subnet-label">Private Subnet (AZ-1a)</div>
+                            
+                            <div class="service-box">
+                                <div class="service-icon">EC2</div>
+                                <div class="service-name">EC2 Instance (Web Server)</div>
+                                <div class="service-desc">Nginx web application</div>
+                                <div class="error-badge">Error: Security group blocks traffic</div>
+                            </div>
+                            
+                            <div class="service-box">
+                                <div class="service-icon">RDS</div>
+                                <div class="service-name">RDS Database</div>
+                                <div class="service-desc">MySQL database instance</div>
+                                <div class="error-badge">Error: Connection timeout</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-arrow">↓</div>
+                
+                <!-- Supporting Services -->
+                <div class="subnet-row">
+                    <div class="service-box">
+                        <div class="service-icon">CW</div>
+                        <div class="service-name">CloudWatch</div>
+                        <div class="service-desc">Monitoring & Logging</div>
+                        <div class="success-badge">✓ Active</div>
+                    </div>
+                    
+                    <div class="service-box">
+                        <div class="service-icon">IAM</div>
+                        <div class="service-name">IAM Roles</div>
+                        <div class="service-desc">Access management</div>
+                        <div class="error-badge">Error: Missing permissions</div>
+                    </div>
+                    
+                    <div class="service-box">
+                        <div class="service-icon">S3</div>
+                        <div class="service-name">S3 Bucket</div>
+                        <div class="service-desc">Static content storage</div>
+                        <div class="error-badge">Error: Bucket policy denies access</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Troubleshooting Section -->
+        <div class="troubleshooting-section">
+            <div class="troubleshooting-title">Common Error Scenarios in This Lab</div>
+            <ul class="error-list">
+                <li><strong>Network Connectivity:</strong> Internet Gateway not attached, missing routes, NACL blocking traffic</li>
+                <li><strong>Security Groups:</strong> Incorrect inbound/outbound rules preventing EC2 communication</li>
+                <li><strong>Load Balancer:</strong> Target group health checks failing, listener misconfiguration</li>
+                <li><strong>Database:</strong> RDS security group blocking connections, wrong subnet group</li>
+                <li><strong>IAM:</strong> EC2 instance profile missing required S3 or RDS permissions</li>
+                <li><strong>Application:</strong> Environment variables not set, application not running on EC2</li>
+            </ul>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-title">Architecture Components Legend</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #FF9900; border: 2px solid #FF9900;"></div>
+                    <span>AWS Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: white; border: 3px dashed #FF9900;"></div>
+                    <span>AWS Region</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #f0f9ff; border: 2px solid #00A4A6;"></div>
+                    <span>VPC (Virtual Private Cloud)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: white; border: 2px solid #545B64;"></div>
+                    <span>Subnets</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #D13212;"></div>
+                    <span>Error/Issue Present</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #1D8102;"></div>
+                    <span>Correctly Configured</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
