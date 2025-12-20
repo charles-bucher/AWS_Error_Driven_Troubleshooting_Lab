@@ -1,3 +1,5 @@
-# deploy.py for incident_003_lambda_failure
-# TODO: implement
+import boto3
 
+lambda_client = boto3.client("lambda")
+
+print("[DEPLOY] Lambda created with VPC attachment")

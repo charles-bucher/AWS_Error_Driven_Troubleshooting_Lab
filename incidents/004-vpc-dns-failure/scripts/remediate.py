@@ -5,7 +5,7 @@ vpc_id = sys.argv[1]
 
 ec2.modify_vpc_attribute(
     VpcId=vpc_id,
-    EnableDnsSupport={"Value": False}
+    EnableDnsSupport={"Value": True}
 )
 
-print("[INCIDENT] DNS disabled in VPC")
+print("[FIXED] DNS restored")

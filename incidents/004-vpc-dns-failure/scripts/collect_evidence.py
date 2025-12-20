@@ -1,9 +1,11 @@
-"""
-collect_evidence.py for 004_dynamodb_failure
-"""
+import boto3, sys
 
-def main():
-    print("This is a placeholder for collect_evidence.py in 004_dynamodb_failure")
+ec2 = boto3.client("ec2")
+vpc_id = sys.argv[1]
 
-if __name__ == "__main__":
-    main()
+attrs = ec2.describe_vpc_attribute(
+    VpcId=vpc_id,
+    Attribute="enableDnsSupport"
+)
+
+print(attrs)

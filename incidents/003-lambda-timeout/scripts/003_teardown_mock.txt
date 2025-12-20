@@ -1,0 +1,25 @@
+"""
+Mock script to simulate tearing down resources for incident 003.
+Does not touch real resources; only prints simulated teardown actions.
+"""
+
+import random
+import time
+
+def simulate_teardown():
+    resources = ["EC2 instance", "S3 bucket", "RDS database", "Lambda function"]
+    print("[INFO] Starting mock teardown for incident 003...")
+    
+    for resource in resources:
+        print(f"[TEARDOWN] Attempting to remove {resource}...")
+        time.sleep(1)
+        success = random.choice([True, True, False])  # Mostly succeeds
+        if success:
+            print(f"[TEARDOWN] {resource} removed successfully.")
+        else:
+            print(f"[TEARDOWN] Failed to remove {resource}. Will retry later.")
+
+    print("[INFO] Mock teardown complete for incident 003.")
+
+if __name__ == "__main__":
+    simulate_teardown()

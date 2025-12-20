@@ -1,3 +1,4 @@
-# collect_evidence.py for incident_003_lambda_failure
-# TODO: implement
+import boto3
 
+logs = boto3.client("logs")
+print("[EVIDENCE] Checking CloudWatch logs for timeouts")

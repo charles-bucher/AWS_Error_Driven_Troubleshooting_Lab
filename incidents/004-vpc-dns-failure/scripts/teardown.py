@@ -1,9 +1,5 @@
-"""
-teardown.py for 004_dynamodb_failure
-"""
+import boto3, sys
 
-def main():
-    print("This is a placeholder for teardown.py in 004_dynamodb_failure")
-
-if __name__ == "__main__":
-    main()
+ec2 = boto3.client("ec2")
+ec2.delete_vpc(VpcId=sys.argv[1])
+print("[CLEANUP] VPC deleted")

@@ -1,3 +1,4 @@
-# teardown.py for incident_003_lambda_failure
-# TODO: implement
+import boto3
 
+boto3.client("lambda").delete_function(FunctionName="timeout-lab")
+print("[CLEANUP] Lambda deleted")

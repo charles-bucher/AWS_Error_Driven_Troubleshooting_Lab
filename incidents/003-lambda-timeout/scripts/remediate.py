@@ -4,7 +4,7 @@ lambda_client = boto3.client("lambda")
 
 lambda_client.update_function_configuration(
     FunctionName="timeout-lab",
-    Timeout=1
+    Timeout=30
 )
 
-print("[INCIDENT] Lambda timeout misconfigured")
+print("[FIXED] Timeout increased")

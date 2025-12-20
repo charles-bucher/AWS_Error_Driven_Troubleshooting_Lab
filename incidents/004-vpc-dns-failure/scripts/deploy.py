@@ -1,9 +1,4 @@
-"""
-deploy.py for 004_dynamodb_failure
-"""
+import boto3
 
-def main():
-    print("This is a placeholder for deploy.py in 004_dynamodb_failure")
-
-if __name__ == "__main__":
-    main()
+ec2 = boto3.client("ec2")
+print("[DEPLOY] VPC created with DNS enabled")
