@@ -55,17 +55,21 @@ Each includes: customer scenario, error logs, troubleshooting steps, resolution,
 <details>
 <summary>📸 <b>Lab Screenshots</b> (Click to expand)</summary>
 
-### CloudWatch Log Analysis
-![CloudWatch Logs](./evidence/cloudwatch-logs-sample.png)
-*Example: Parsing Lambda error logs to identify timeout root cause*
+### Lab 001: EC2 SSH Lockout
+![EC2 SSH Lockout](./incidents/001-ec2-ssh-lockout/screenshots/security-group-issue.png)
+*Security group misconfiguration blocking SSH access*
 
-### AWS Console Troubleshooting
-![AWS Console](./evidence/ec2-troubleshooting-sample.png)
-*Example: Debugging EC2 instance connectivity via security group rules*
+### Lab 002: S3 Public Bucket Exposure
+![S3 Bucket Policy](./incidents/002-s3-public-bucket/screenshots/bucket-policy-error.png)
+*Troubleshooting public access block settings*
 
-### Incident Documentation
-![Documentation](./evidence/playbook-sample.png)
-*Example: Structured runbook for S3 access denied errors*
+### Lab 003: Lambda Timeout
+![Lambda Timeout](./incidents/003-lambda-timeout/screenshots/cloudwatch-timeout.png)
+*CloudWatch logs showing function execution timeout*
+
+### Lab 004: VPC DNS Failure
+![VPC DNS](./incidents/004-vpc-dns-failure/screenshots/dns-resolution-error.png)
+*VPC DNS resolution troubleshooting*
 
 </details>
 
