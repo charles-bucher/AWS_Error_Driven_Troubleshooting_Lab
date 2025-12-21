@@ -576,7 +576,7 @@ This project prepares you for:
 *Self-Taught Cloud Support Engineer | AWS Troubleshooting Specialist*
 
 [![GitHub](https://img.shields.io/badge/GitHub-charles--bucher-181717?style=flat-square&logo=github)](https://github.com/charles-bucher)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/charles-bucher)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/charles-bucher-cloud)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail)](mailto:charles.bucher@example.com)
 
 **Looking for Cloud Support Engineers?** This project demonstrates:
