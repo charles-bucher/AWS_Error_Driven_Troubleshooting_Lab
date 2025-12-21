@@ -14,7 +14,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab/graphs/commit-activity)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+**Cloud Support Engineer Portfolio | AWS Troubleshooting & Incident Response**
 
+*Entry-level cloud engineer seeking remote roles • 5+ incidents documented • Real troubleshooting experience*
 **Hands-On AWS Troubleshooting | Cloud Support Engineer Portfolio Project**
 
 *Real-world incident response • Root cause analysis • Technical documentation • Cloud operations*
@@ -593,6 +595,26 @@ This project prepares you for:
 - **Python Boto3** - Powerful AWS SDK for automation
 - **Open Source Community** - Inspiration from countless GitHub projects
 
+---
+
+## 📞 Contact
+
+**Charles Bucher**  
+📍 **Location:** Largo, Florida (Remote preferred)  
+💼 **Seeking:** Cloud Support Engineer roles | AWS Support | Technical Support Engineer  
+🎯 **Target:** $60k-$100k | Remote | Background-friendly
+
+[![GitHub](https://img.shields.io/badge/GitHub-charles--bucher-181717?style=flat&logo=github)](https://github.com/charles-bucher)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/charles-bucher)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat&logo=gmail)](mailto:your.email@example.com)
+
+**Open to:**
+- ✅ Cloud Support Engineer (AWS, Azure, GCP)
+- ✅ Technical Support Engineer - Cloud
+- ✅ Junior DevOps Engineer
+- ✅ SysOps Administrator (Entry-level)
+
+**Why hire me?** Real troubleshooting portfolio with documented incidents, not just certifications.
 ---
 
 ## 📜 License
