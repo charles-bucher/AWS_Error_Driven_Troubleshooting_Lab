@@ -1,25 +1,31 @@
-# [Incident Name]
+001-ec2-ssh-lockout
 
-## Description
-Brief description of the incident scenario and what it simulates.  
-Example: *This incident simulates an EC2 SSH lockout where users cannot access the server.*
+Description
+This incident simulates an EC2 SSH lockout scenario where users cannot access the server due to misconfigured security groups or key issues.
 
-## Objectives
-- Identify the root cause of the issue.
-- Collect necessary evidence.
-- Remediate the issue.
-- Validate that the issue is resolved.
+Objectives
 
-## Included Scripts
-| Script | Purpose |
-|--------|---------|
-| `break.py` | Simulates the failure or misconfiguration. |
-| `collect_evidence.py` | Gathers logs, configs, or metrics for troubleshooting. |
-| `collect_evidence_mock.py` | Optional mock data for testing evidence collection. |
-| `deploy.py` | Deploys the infrastructure or scenario for testing. |
-| `remediate.py` | Contains remediation steps to fix the issue. |
-| `teardown.py` | Cleans up resources and restores environment. |
+Identify the root cause of the SSH lockout.
 
-## Screenshots
-- Include any screenshots of the scenario (optional).  
-Example:
+Collect necessary evidence (logs, instance configuration).
+
+Remediate the issue by fixing security groups or keys.
+
+Validate that SSH access is restored.
+
+Included Scripts
+
+Script	Purpose
+break.py	Simulates the EC2 SSH lockout.
+collect_evidence.py	Gathers logs, configs, or metrics for troubleshooting.
+deploy.py	Deploys the EC2 instance and network setup for testing.
+remediate.py	Fixes the misconfiguration to restore SSH access.
+teardown.py	Cleans up EC2 and related resources.
+
+Screenshots
+Include screenshots of SSH errors, security group configs, and evidence collected.
+
+Commit Info
+
+Name	Last Commit Message	Last Commit Date
+001-ec2-ssh-lockout	Clean repo: move scripts into incidents, add incident READMEs, remove…	2 minutes ago

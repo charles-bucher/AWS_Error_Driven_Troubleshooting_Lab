@@ -1,25 +1,31 @@
-# [Incident Name]
+003-lambda-timeout
 
-## Description
-Brief description of the incident scenario and what it simulates.  
-Example: *This incident simulates an EC2 SSH lockout where users cannot access the server.*
+Description
+This incident simulates a Lambda function that times out due to misconfigured function settings or code issues.
 
-## Objectives
-- Identify the root cause of the issue.
-- Collect necessary evidence.
-- Remediate the issue.
-- Validate that the issue is resolved.
+Objectives
 
-## Included Scripts
-| Script | Purpose |
-|--------|---------|
-| `break.py` | Simulates the failure or misconfiguration. |
-| `collect_evidence.py` | Gathers logs, configs, or metrics for troubleshooting. |
-| `collect_evidence_mock.py` | Optional mock data for testing evidence collection. |
-| `deploy.py` | Deploys the infrastructure or scenario for testing. |
-| `remediate.py` | Contains remediation steps to fix the issue. |
-| `teardown.py` | Cleans up resources and restores environment. |
+Identify the root cause of the Lambda timeout.
 
-## Screenshots
-- Include any screenshots of the scenario (optional).  
-Example:
+Collect logs and metrics.
+
+Remediate the Lambda function configuration or code.
+
+Validate that the function executes successfully.
+
+Included Scripts
+
+Script	Purpose
+break.py	Introduces timeout errors in the Lambda function.
+collect_evidence.py	Collects CloudWatch logs and function metrics.
+deploy.py	Deploys the Lambda function and triggers for testing.
+remediate.py	Adjusts configuration/code to prevent timeout.
+teardown.py	Cleans up Lambda and related resources.
+
+Screenshots
+Include CloudWatch logs, timeout errors, and remediation evidence.
+
+Commit Info
+
+Name	Last Commit Message	Last Commit Date
+003-lambda-timeout	Clean repo: move scripts into incidents, add incident READMEs, remove…

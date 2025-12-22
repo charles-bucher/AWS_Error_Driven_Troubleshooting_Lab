@@ -1,25 +1,33 @@
-# [Incident Name]
+004-lambda-timeout
 
-## Description
-Brief description of the incident scenario and what it simulates.  
-Example: *This incident simulates an EC2 SSH lockout where users cannot access the server.*
+Description
+This incident simulates another Lambda timeout scenario or similar runtime failure for advanced testing and automation.
 
-## Objectives
-- Identify the root cause of the issue.
-- Collect necessary evidence.
-- Remediate the issue.
-- Validate that the issue is resolved.
+Objectives
 
-## Included Scripts
-| Script | Purpose |
-|--------|---------|
-| `break.py` | Simulates the failure or misconfiguration. |
-| `collect_evidence.py` | Gathers logs, configs, or metrics for troubleshooting. |
-| `collect_evidence_mock.py` | Optional mock data for testing evidence collection. |
-| `deploy.py` | Deploys the infrastructure or scenario for testing. |
-| `remediate.py` | Contains remediation steps to fix the issue. |
-| `teardown.py` | Cleans up resources and restores environment. |
+Identify root cause of runtime failure.
 
-## Screenshots
-- Include any screenshots of the scenario (optional).  
-Example:
+Collect logs, metrics, and evidence.
+
+Remediate the function.
+
+Validate correct execution.
+
+Included Scripts
+
+Script	Purpose
+break.py	Triggers Lambda failure scenario.
+collect_evidence.py	Gathers logs and execution metrics.
+deploy.py	Deploys Lambda test environment.
+remediate.py	Fixes Lambda runtime issues.
+teardown.py	Cleans up all resources.
+
+Screenshots
+Include relevant screenshots of failures, logs, and remediation steps.
+
+Commit Info
+
+Name	Last Commit Message	Last Commit Date
+004-lambda-timeout	Clean repo: move scripts into incidents, add incident READMEs, remove…	2 minutes ago
+
+If you want, I can turn this into ready-to-drop READM
