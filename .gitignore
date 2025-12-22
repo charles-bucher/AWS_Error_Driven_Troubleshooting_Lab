@@ -1,2 +1,13 @@
 
 __pycache__/
+
+# Additional patterns
+*.pyc
+.env
+venv/
+.aws/
+*.tfstate
+*.log
+.DS_Store
+*.key
+*.pem
