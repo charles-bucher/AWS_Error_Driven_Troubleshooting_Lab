@@ -31,3 +31,24 @@ Name	Last Commit Message	Last Commit Date
 004-lambda-timeout	Clean repo: move scripts into incidents, add incident READMEs, remove…	2 minutes ago
 
 If you want, I can turn this into ready-to-drop READM
+## Quick Start
+
+*Placeholder: Add content here*
+
+## Incident Scenarios
+
+*Placeholder: Add content here*
+
+## Evidence
+
+*Placeholder: Add content here*
+
+## Metrics
+
+*Placeholder: Add content here*
+
+## Skills Mapped
+
+*Placeholder: Add content here*
+
+### Keywords: EC2, S3, VPC, CloudWatch, IAM, troubleshoot, root cause

@@ -29,3 +29,24 @@ Commit Info
 
 Name	Last Commit Message	Last Commit Date
 002-s3-public-bucket	Clean repo: move scripts into incidents, add incident READMEs, remove…	2 minutes ago
+## Quick Start
+
+*Placeholder: Add content here*
+
+## Incident Scenarios
+
+*Placeholder: Add content here*
+
+## Evidence
+
+*Placeholder: Add content here*
+
+## Metrics
+
+*Placeholder: Add content here*
+
+## Skills Mapped
+
+*Placeholder: Add content here*
+
+### Keywords: EC2, Lambda, VPC, CloudWatch, IAM, troubleshoot, root cause
