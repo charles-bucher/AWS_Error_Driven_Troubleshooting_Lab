@@ -1,2 +1,0 @@
-Incident simulated at 2025-12-14 14:05:08.905831
-SSH access removed from EC2 Security Group to simulate outage.
