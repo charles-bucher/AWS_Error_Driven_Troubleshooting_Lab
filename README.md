@@ -75,23 +75,23 @@ python teardown.py
 ## 📸 Example: Incident 002 - S3 Public Bucket Exposure
 
 ### Step 1: S3 Bucket Deployment
-![S3 Bucket Creation](incidents/002-s3-public-bucket/screenshots/002_01_deploy_s3_bucket.png)
+![S3 Bucket Creation](incidents/002-s3-public-bucket/002_screenshots/002_01_deploy_s3_bucket.png)
 *Deploying S3 bucket with intentional misconfiguration for security analysis*
 
 ### Step 2: Bucket Misconfiguration Analysis
-![Bucket Misconfiguration](incidents/002-s3-public-bucket/screenshots/002_02_bucket_misconfig.png)
+![Bucket Misconfiguration](incidents/002-s3-public-bucket/002_screenshots/002_02_bucket_misconfig.png)
 *Identifying public access settings and policy vulnerabilities - ROOT CAUSE*
 
 ### Step 3: Evidence Collection
-![Evidence Collection](incidents/002-s3-public-bucket/screenshots/002_03_collect_evidence.png)
+![Evidence Collection](incidents/002-s3-public-bucket/002_screenshots/002_03_collect_evidence.png)
 *Gathering CloudTrail logs, bucket policies, and access patterns*
 
 ### Step 4: Complete Workflow
-![Full Workflow](incidents/002-s3-public-bucket/screenshots/002_04_full_workflow.png)
+![Full Workflow](incidents/002-s3-public-bucket/002_screenshots/002_04_full_workflow.png)
 *End-to-end demonstration of detection, investigation, and remediation process*
 
 ### Step 5: Public Access Validation
-![Public Access Validation](incidents/002-s3-public-bucket/screenshots/002_05_validate_public_access.png)
+![Public Access Validation](incidents/002-s3-public-bucket/002_screenshots/002_05_validate_public_access.png)
 *Verifying bucket security settings and confirming remediation success*
 
 ---
@@ -99,23 +99,23 @@ python teardown.py
 ## 📸 Example: Incident 003 - Lambda Function Timeout
 
 ### Step 1: Lambda Function Deployment
-![Lambda Deploy](incidents/003-lambda-timeout/screenshots/003_01_lambda_deploy.png)
+![Lambda Deploy](incidents/003-lambda-timeout/003_screenshots/003_01_lambda_deploy.png)
 *Deploying Lambda function with VPC configuration and timeout settings*
 
 ### Step 2: Break Scenario
-![Break Scenario](incidents/003-lambda-timeout/screenshots/003_break_mock.png)
+![Break Scenario](incidents/003-lambda-timeout/003_screenshots/003_break_mock.png)
 *Introducing timeout condition through VPC network restrictions*
 
 ### Step 3: Log Collection & Analysis
-![CloudWatch Logs](incidents/003-lambda-timeout/screenshots/003_03_collect_logs.png)
+![CloudWatch Logs](incidents/003-lambda-timeout/003_screenshots/003_03_collect_logs.png)
 *Analyzing CloudWatch logs to identify timeout patterns and root cause*
 
 ### Step 4: Remediation Implementation
-![Remediation](incidents/003-lambda-timeout/screenshots/003_remediate_mock.png)
+![Remediation](incidents/003-lambda-timeout/003_screenshots/003_remediate_mock.png)
 *Applying fixes: VPC endpoint configuration, timeout adjustments, retry logic*
 
 ### Step 5: Teardown & Cleanup
-![Teardown](incidents/003-lambda-timeout/screenshots/003_teardown.png)
+![Teardown](incidents/003-lambda-timeout/003_screenshots/003_teardown.png)
 *Proper resource cleanup to prevent cost leakage and maintain clean environment*
 
 ---
@@ -123,27 +123,27 @@ python teardown.py
 ## 📸 Example: Incident 001 - EC2 SSH Lockout Resolution
 
 ### Step 1: VPC Infrastructure Setup
-![VPC Creation](incidents/001-ec2-ssh-lockout/screenshots/001_01_vpc_creation.png)
+![VPC Creation](incidents/001-ec2-ssh-lockout/001_screenshots/001_01_vpc_creation.png)
 *Creating isolated VPC environment for the troubleshooting scenario*
 
 ### Step 2: Subnet Configuration
-![Subnet Configuration](incidents/001-ec2-ssh-lockout/screenshots/001_02_subnets.png)
+![Subnet Configuration](incidents/001-ec2-ssh-lockout/001_screenshots/001_02_subnets.png)
 *Configuring public and private subnets with proper CIDR blocks*
 
 ### Step 3: Route Table Analysis
-![Route Tables](incidents/001-ec2-ssh-lockout/screenshots/001_03_route_tables.png)
+![Route Tables](incidents/001-ec2-ssh-lockout/001_screenshots/001_03_route_tables.png)
 *Investigating route table configurations and internet gateway associations*
 
 ### Step 4: Security Group Investigation
-![Security Group Rules](incidents/001-ec2-ssh-lockout/screenshots/001_04_security_group.png)
+![Security Group Rules](incidents/001-ec2-ssh-lockout/001_screenshots/001_04_security_group.png)
 *Identifying misconfigured inbound rules preventing SSH access - ROOT CAUSE*
 
 ### Step 5: EC2 Instance Details
-![EC2 Instances](incidents/001-ec2-ssh-lockout/screenshots/001_05_ec2_instances.png)
+![EC2 Instances](incidents/001-ec2-ssh-lockout/001_screenshots/001_05_ec2_instances.png)
 *Verifying instance state, networking, and security group attachments*
 
 ### Step 6: Storage & System Configuration
-![Storage Gateway](incidents/001-ec2-ssh-lockout/screenshots/001_06_storage_gateway.png)
+![Storage Gateway](incidents/001-ec2-ssh-lockout/001_screenshots/001_06_storage_gateway.png)
 *Confirming storage and system-level configurations during troubleshooting*
 
 ---
@@ -159,7 +159,7 @@ incidents/001-ec2-ssh-lockout/
 │   ├── collect_evidence.py     # Gathers logs, metrics, screenshots
 │   ├── fix.py                  # Automated remediation
 │   └── teardown.py             # Cleanup resources
-├── screenshots/
+├── 001_screenshots/
 │   ├── 001_01_vpc_creation.png
 │   ├── 001_02_subnets.png
 │   ├── 001_03_route_tables.png
