@@ -150,7 +150,7 @@ python teardown.py
 
 ## 🔍 What's Included in Each Incident
 
-```
+```text
 incidents/001-ec2-ssh-lockout/
 ├── README.md                    # Full incident documentation
 ├── scripts/
@@ -316,8 +316,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact
 
-**Charles Bucher**  
-GitHub: [@charles-bucher](https://github.com/charles-bucher)  
+**Charles Bucher**\
+GitHub: [@charles-bucher](https://github.com/charles-bucher)\
 Portfolio: [View Live Projects](https://github.com/charles-bucher)
 
 *Self-taught developer focusing on cloud infrastructure and remote opportunities*
