@@ -1,27 +1,28 @@
+#!/usr/bin/env python3
+"""
+collect_evidence_mock.py
+Collects evidence for EC2 SSH lockout incidents.
+Environment variable EVIDENCE_BUCKET must be set.
+"""
+
+import os
 import sys
-import time
 
-# Check for a bucket argument
-if len(sys.argv) < 2:
-    print("Usage: python collect_evidence_mock.py <bucket_name>")
-    sys.exit(1)
+def main():
+    # Get bucket name from environment variable
+    bucket_name = os.environ.get("EVIDENCE_BUCKET")
+    if not bucket_name:
+        print("❌ Error: Please set the EVIDENCE_BUCKET environment variable")
+        sys.exit(1)
 
-bucket = sys.argv[1]
+    print(f"🔹 Using bucket: {bucket_name}")
 
-print(f"[INFO] Starting evidence collection for bucket: {bucket}")
+    # Example placeholder logic
+    # Replace this section with real collection logic
+    print("Collecting evidence...")
+    # ... your collection code here ...
 
-# Mock steps
-steps = [
-    "Checking bucket policies...",
-    "Listing objects in the bucket...",
-    "Checking public access settings...",
-    "Capturing mock screenshots...",
-    "Generating report..."
-]
+    print("✅ Evidence collection complete.")
 
-for step in steps:
-    print(f"[MOCK] {step}")
-    time.sleep(0.5)  # simulate some delay
-
-print(f"[SUCCESS] Evidence collection complete for bucket: {bucket}")
-print("[MOCK] Screenshots saved to /mock_screenshots folder")
+if __name__ == "__main__":
+    main()

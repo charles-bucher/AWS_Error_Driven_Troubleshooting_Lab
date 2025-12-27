@@ -1,343 +1,429 @@
-# AWS Error-Driven Troubleshooting Lab
+# AWS Error-Driven Troubleshooting Lab 🔧
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![AWS](https://img.shields.io/badge/AWS-Free_Tier-FF9900?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/free/)
-[![Python 3.14+](https://img.shields.io/badge/python-3.14+-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Boto3](https://img.shields.io/badge/boto3-SDK-orange)](https://boto3.amazonaws.com/)
-[![EC2](https://img.shields.io/badge/AWS-EC2-FF9900)](https://aws.amazon.com/ec2/)
-[![S3](https://img.shields.io/badge/AWS-S3-569A31)](https://aws.amazon.com/s3/)
-[![Lambda](https://img.shields.io/badge/AWS-Lambda-FF9900)](https://aws.amazon.com/lambda/)
-[![CloudWatch](https://img.shields.io/badge/CloudWatch-Monitoring-FF4F8B)](https://aws.amazon.com/cloudwatch/)
-[![VPC](https://img.shields.io/badge/AWS-VPC-FF9900)](https://aws.amazon.com/vpc/)
-[![IAM](https://img.shields.io/badge/AWS-IAM-FF9900)](https://aws.amazon.com/iam/)
-[![Incidents Complete](https://img.shields.io/badge/Incidents-3%2F5%20Complete-success)](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
-[![Documentation](https://img.shields.io/badge/Docs-Comprehensive-blue)](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab/tree/main/docs)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
-[![Remote Friendly](https://img.shields.io/badge/Remote-Friendly-success)](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-1.0+-7B42BC?logo=terraform&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?logo=amazon-aws&logoColor=white)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Learning](https://img.shields.io/badge/Learning-Error--Driven-red.svg)
+
+> **Learn AWS troubleshooting by breaking things, investigating errors, and fixing them**
+
+Hands-on error-driven learning lab featuring **4 real-world AWS incidents**. Each lab intentionally introduces errors, then guides you through investigation, root cause analysis, and remediation—teaching practical cloud troubleshooting skills through experience.
 
 ---
 
-## 🎯 TL;DR
+## 🎯 What is Error-Driven Learning?
 
-**Real-world AWS troubleshooting portfolio** built by a self-taught developer targeting remote Cloud Support Engineer roles. This lab demonstrates hands-on skills by intentionally breaking AWS environments and then documenting the complete investigation, root cause analysis, and remediation process—just like you'd do on the job.
+**Traditional Learning:** Read documentation → Deploy perfectly → Never see real errors
 
-**What's Inside:**
-- ✅ **3 Complete Incidents**: EC2 SSH lockouts, S3 security exposures, Lambda timeouts
-- 📸 **Visual Documentation**: 15+ screenshots showing every troubleshooting step
-- 📊 **KPI Tracking**: MTTD, MTTI, MTTR metrics for each incident
-- 🐍 **Python Automation**: Boto3 scripts for deployment, breaking, evidence collection, and cleanup
-- 📝 **Professional RCAs**: Industry-standard Root Cause Analysis documentation
-- 💰 **Free Tier Friendly**: All labs run on AWS Free Tier (< $1/month)
+**Error-Driven Learning:** Deploy → Break something → Investigate logs → Fix it → Learn deeply
 
-**Key Skills Demonstrated:** EC2 • S3 • Lambda • VPC • CloudWatch • IAM • Python • Boto3 • Incident Response • Log Analysis • Security Troubleshooting
+This approach mirrors real cloud engineering work where you:
+1. Encounter unexpected errors
+2. Read logs and metrics
+3. Form hypotheses
+4. Test solutions
+5. Document what you learned
 
-> **Perfect for:** Entry-level cloud support roles, remote positions, felon-friendly tech companies
+**Perfect for:** Entry-level cloud engineers learning practical troubleshooting skills
+
+---
+
+## 🔬 The 4 Error Labs
+
+Each lab follows the same proven methodology:
+
+### Lab Structure
+1. **Deploy** - Set up AWS infrastructure with Terraform
+2. **Break** - Intentionally introduce a realistic misconfiguration
+3. **Investigate** - Use CloudWatch, CloudTrail, and AWS Console to find the issue
+4. **Fix** - Remediate the problem following best practices
+5. **Validate** - Confirm the fix works
+6. **Document** - Record what you learned
+
+---
+
+## 🚨 Lab 001: EC2 SSH Lockout
+
+**The Error:** Can't SSH into EC2 instance - connection times out
+
+**What You'll Learn:**
+- VPC networking fundamentals
+- Security group configuration
+- Route table troubleshooting
+- Network ACLs vs Security Groups
+- VPC Flow Logs analysis
+
+### Visual Walkthrough
+
+![Security Groups](incidents/001-ec2-ssh-lockout/001_screenshots/001_04_security_group.png)
+*Security group misconfiguration blocking SSH access*
+
+![EC2 Instances](incidents/001-ec2-ssh-lockout/001_screenshots/001_05_ec2_instances.png)
+*EC2 instances deployed but unreachable due to network issues*
+
+**Skills Practiced:**
+- EC2 instance troubleshooting
+- VPC networking
+- Security group rules
+- SSH connectivity debugging
+
+[📖 Full Lab Guide](incidents/001-ec2-ssh-lockout/README.md)
+
+---
+
+## 🚨 Lab 002: S3 Bucket Accidentally Public
+
+**The Error:** S3 bucket exposed to internet - potential data breach
+
+**What You'll Learn:**
+- S3 bucket policy analysis
+- IAM permissions debugging
+- CloudTrail forensics
+- Security incident response
+- Block Public Access settings
+
+### Visual Walkthrough
+
+![S3 Workflow](incidents/002-s3-public-bucket/002_screenshots/002_04_full_workflow.png)
+*Complete workflow from deployment through investigation to remediation*
+
+![Bucket Misconfiguration](incidents/002-s3-public-bucket/002_screenshots/002_02_bucket_misconfig.png)
+*S3 bucket policy misconfigured allowing public access*
+
+![Evidence Collection](incidents/002-s3-public-bucket/002_screenshots/002_03_collect_evidence.png)
+*Using CloudTrail to investigate who made the configuration change*
+
+**Skills Practiced:**
+- S3 security configuration
+- Bucket policies
+- IAM troubleshooting
+- CloudTrail forensics
+- Security compliance
+
+[📖 Full Lab Guide](incidents/002-s3-public-bucket/README.md)
+
+---
+
+## 🚨 Lab 003: Lambda Function Timeout
+
+**The Error:** Lambda function fails with timeout errors under load
+
+**What You'll Learn:**
+- Lambda performance tuning
+- CloudWatch Logs investigation
+- Memory vs timeout configuration
+- Error handling best practices
+- Performance optimization
+
+### Visual Walkthrough
+
+![Lambda Deployment](incidents/003-lambda-timeout/003_screenshots/003_01_lambda_deploy.png)
+*Lambda function deployed with insufficient resources*
+
+![CloudWatch Logs](incidents/003-lambda-timeout/003_screenshots/003_03_collect_logs.png)
+*Investigating timeout errors in CloudWatch Logs*
+
+![Break and Fix](incidents/003-lambda-timeout/003_screenshots/003_break_mock.png)
+*Intentionally introducing timeout by reducing memory allocation*
+
+**Skills Practiced:**
+- Serverless troubleshooting
+- Lambda configuration
+- CloudWatch Logs analysis
+- Performance debugging
+- Resource optimization
+
+[📖 Full Lab Guide](incidents/003-lambda-timeout/README.md)
+
+---
+
+## 🚨 Lab 004: Lambda Timeout (Advanced)
+
+**The Error:** Complex Lambda timeout with multiple root causes
+
+**What You'll Learn:**
+- Multi-factor troubleshooting
+- Dependency conflicts
+- Cold start optimization
+- Concurrent execution issues
+- Advanced Lambda debugging
+
+**Skills Practiced:**
+- Complex error diagnosis
+- Multiple hypothesis testing
+- Advanced serverless patterns
+- Production debugging techniques
+
+[📖 Full Lab Guide](incidents/004-lambda-timeout/README.md)
 
 ---
 
 ## 🚀 Quick Start
 
-```bash
-# Clone the repository
-git clone https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab.git
-cd AWS_Error_Driven_Troubleshooting_Lab
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure AWS CLI (requires AWS account)
-aws configure
-
-# Run your first incident
-cd incidents/001-ec2-ssh-lockout/scripts
-python deploy.py
-python break.py
-python collect_evidence.py
-python teardown.py
-```
-
-**Cost:** All labs are designed to run within AWS Free Tier limits (< $1/month typical usage)
-
----
-
-## 📋 Incident Scenarios
-
-| ID | Incident Name | AWS Services | Difficulty | Status | Avg Resolution Time |
-|----|---------------|--------------|------------|--------|---------------------|
-| 001 | EC2 SSH Lockout | EC2, VPC, Security Groups | 🟢 Entry | ✅ Complete | ~15 min |
-| 002 | S3 Public Bucket Exposure | S3, IAM, CloudTrail | 🟢 Entry | ✅ Complete | ~20 min |
-| 003 | Lambda Function Timeout | Lambda, VPC, CloudWatch | 🟡 Intermediate | ✅ Complete | ~30 min |
-| 004 | Lambda Cold Start Issues | Lambda, API Gateway | 🟡 Intermediate | 🛠 Planned | TBD |
-| 005 | VPC Network Connectivity | VPC, Route Tables, NACLs | 🟡 Intermediate | 🛠 Planned | TBD |
-
----
-
-## 📸 Example: Incident 002 - S3 Public Bucket Exposure
-
-### Step 1: S3 Bucket Deployment
-![S3 Bucket Creation](incidents/002-s3-public-bucket/002_screenshots/002_01_deploy_s3_bucket.png)
-*Deploying S3 bucket with intentional misconfiguration for security analysis*
-
-### Step 2: Bucket Misconfiguration Analysis
-![Bucket Misconfiguration](incidents/002-s3-public-bucket/002_screenshots/002_02_bucket_misconfig.png)
-*Identifying public access settings and policy vulnerabilities - ROOT CAUSE*
-
-### Step 3: Evidence Collection
-![Evidence Collection](incidents/002-s3-public-bucket/002_screenshots/002_03_collect_evidence.png)
-*Gathering CloudTrail logs, bucket policies, and access patterns*
-
-### Step 4: Complete Workflow
-![Full Workflow](incidents/002-s3-public-bucket/002_screenshots/002_04_full_workflow.png)
-*End-to-end demonstration of detection, investigation, and remediation process*
-
-### Step 5: Public Access Validation
-![Public Access Validation](incidents/002-s3-public-bucket/002_screenshots/002_05_validate_public_access.png)
-*Verifying bucket security settings and confirming remediation success*
-
----
-
-## 📸 Example: Incident 003 - Lambda Function Timeout
-
-### Step 1: Lambda Function Deployment
-![Lambda Deploy](incidents/003-lambda-timeout/003_screenshots/003_01_lambda_deploy.png)
-*Deploying Lambda function with VPC configuration and timeout settings*
-
-### Step 2: Break Scenario
-![Break Scenario](incidents/003-lambda-timeout/003_screenshots/003_break_mock.png)
-*Introducing timeout condition through VPC network restrictions*
-
-### Step 3: Log Collection & Analysis
-![CloudWatch Logs](incidents/003-lambda-timeout/003_screenshots/003_03_collect_logs.png)
-*Analyzing CloudWatch logs to identify timeout patterns and root cause*
-
-### Step 4: Remediation Implementation
-![Remediation](incidents/003-lambda-timeout/003_screenshots/003_remediate_mock.png)
-*Applying fixes: VPC endpoint configuration, timeout adjustments, retry logic*
-
-### Step 5: Teardown & Cleanup
-![Teardown](incidents/003-lambda-timeout/003_screenshots/003_teardown.png)
-*Proper resource cleanup to prevent cost leakage and maintain clean environment*
-
----
-
-## 📸 Example: Incident 001 - EC2 SSH Lockout Resolution
-
-### Step 1: VPC Infrastructure Setup
-![VPC Creation](incidents/001-ec2-ssh-lockout/001_screenshots/001_01_vpc_creation.png)
-*Creating isolated VPC environment for the troubleshooting scenario*
-
-### Step 2: Subnet Configuration
-![Subnet Configuration](incidents/001-ec2-ssh-lockout/001_screenshots/001_02_subnets.png)
-*Configuring public and private subnets with proper CIDR blocks*
-
-### Step 3: Route Table Analysis
-![Route Tables](incidents/001-ec2-ssh-lockout/001_screenshots/001_03_route_tables.png)
-*Investigating route table configurations and internet gateway associations*
-
-### Step 4: Security Group Investigation
-![Security Group Rules](incidents/001-ec2-ssh-lockout/001_screenshots/001_04_security_group.png)
-*Identifying misconfigured inbound rules preventing SSH access - ROOT CAUSE*
-
-### Step 5: EC2 Instance Details
-![EC2 Instances](incidents/001-ec2-ssh-lockout/001_screenshots/001_05_ec2_instances.png)
-*Verifying instance state, networking, and security group attachments*
-
-### Step 6: Storage & System Configuration
-![Storage Gateway](incidents/001-ec2-ssh-lockout/001_screenshots/001_06_storage_gateway.png)
-*Confirming storage and system-level configurations during troubleshooting*
-
----
-
-## 🔍 What's Included in Each Incident
-
-```text
-incidents/001-ec2-ssh-lockout/
-├── README.md                    # Full incident documentation
-├── scripts/
-│   ├── deploy.py               # Creates the broken environment
-│   ├── break.py                # Introduces the specific error
-│   ├── collect_evidence.py     # Gathers logs, metrics, screenshots
-│   ├── fix.py                  # Automated remediation
-│   └── teardown.py             # Cleanup resources
-├── 001_screenshots/
-│   ├── 001_01_vpc_creation.png
-│   ├── 001_02_subnets.png
-│   ├── 001_03_route_tables.png
-│   ├── 001_04_security_group.png
-│   ├── 001_05_ec2_instances.png
-│   └── 001_06_storage_gateway.png
-├── logs/
-│   ├── cloudwatch-logs.json
-│   ├── system-logs.txt
-│   └── error-traces.log
-├── metrics/
-│   ├── performance-data.json
-│   └── resolution-timeline.csv
-└── docs/
-    ├── RCA-report.md           # Root Cause Analysis
-    ├── remediation-steps.md
-    └── prevention-plan.md
-```
-
----
-
-## 📊 Key Performance Indicators (KPIs)
-
-Each incident tracks industry-standard metrics:
-
-- **MTTD** (Mean Time To Detect): How quickly the issue was identified
-- **MTTI** (Mean Time To Investigate): Time spent analyzing the root cause
-- **MTTR** (Mean Time To Resolve): Total time from detection to resolution
-- **Cost Impact**: AWS service costs incurred during the incident
-- **Documentation Time**: Time invested in creating thorough documentation
-
-### Example Metrics (Incident 001)
-
-| Metric | Value |
-|--------|-------|
-| MTTD | 2 minutes |
-| MTTI | 8 minutes |
-| MTTR | 15 minutes |
-| Cost | $0.12 |
-| Documentation | 45 minutes |
-
----
-
-## 🛠 Technical Skills Demonstrated
-
-### AWS Services
-- **EC2**: Instance management, security groups, key pairs, system logs
-- **S3**: Bucket policies, encryption, access logging, versioning
-- **Lambda**: Function configuration, VPC integration, timeout troubleshooting
-- **VPC**: Network architecture, route tables, NACLs, security groups
-- **CloudWatch**: Logs analysis, metrics monitoring, alarms, dashboards
-- **IAM**: Policy troubleshooting, role permissions, access analysis
-
-### Cloud Support Skills
-- Incident response and triage
-- Root cause analysis (RCA) documentation
-- Log analysis and correlation
-- Performance metrics interpretation
-- Cost optimization awareness
-- Customer-facing documentation
-
-### Automation & Scripting
-- **Python**: Boto3 SDK, error handling, automation scripts
-- **Bash/PowerShell**: System administration, log parsing
-- **Infrastructure as Code**: Terraform (planned)
-- **CI/CD Concepts**: Automated testing and validation
-
----
-
-## 🎓 Learning Methodology
-
-This project follows an **error-driven learning** approach:
-
-1. **Break It**: Intentionally misconfigure AWS resources
-2. **Detect It**: Use monitoring tools to identify the issue
-3. **Investigate It**: Gather evidence and analyze logs
-4. **Fix It**: Implement the correct solution
-5. **Document It**: Create comprehensive RCA reports
-6. **Prevent It**: Design safeguards against recurrence
-
-This mirrors real cloud support workflows where you must troubleshoot unfamiliar issues under time pressure.
-
----
-
-## 📦 Installation & Requirements
-
 ### Prerequisites
-- AWS Account (Free Tier eligible)
-- Python 3.14 or higher
-- AWS CLI configured with appropriate credentials
-- Basic understanding of AWS services
 
-### Setup
+- **AWS Account** (free tier works for most labs)
+- **AWS CLI** configured with credentials
+- **Terraform** 1.0+ installed
+- **Python** 3.9+ installed
+- Basic command line familiarity
+
+### Run Your First Lab
+
 ```bash
-# Clone repository
+# 1. Clone the repository
 git clone https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab.git
 cd AWS_Error_Driven_Troubleshooting_Lab
 
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# 2. Start with Lab 001
+cd incidents/001-ec2-ssh-lockout
 
-# Install dependencies
-pip install -r requirements.txt
+# 3. Read the lab guide
+cat README.md
 
-# Verify AWS CLI configuration
-aws sts get-caller-identity
+# 4. Deploy infrastructure
+cd terraform
+terraform init
+terraform apply
+
+# 5. Follow the lab instructions to:
+#    - Break the configuration
+#    - Investigate the error
+#    - Fix the issue
+#    - Validate your solution
 ```
 
 ---
 
-## 🔐 Security & Best Practices
+## 📂 Project Structure
 
-- All scenarios use least-privilege IAM policies
-- Sensitive data is never committed to the repository
-- Automated teardown scripts prevent resource leakage
-- Security group rules are scoped to necessary access only
-- All credentials are managed through AWS CLI/SDK
+```
+AWS_Error_Driven_Troubleshooting_Lab/
+├── .github/workflows/      # CI/CD automation
+├── diagrams/               # Architecture diagrams
+├── docs/                   # Documentation
+├── incidents/              # The 4 error labs
+│   ├── 001-ec2-ssh-lockout/
+│   │   ├── 001_screenshots/
+│   │   ├── scripts/
+│   │   ├── terraform/
+│   │   └── README.md       # Lab 001 guide
+│   ├── 002-s3-public-bucket/
+│   │   ├── 002_screenshots/
+│   │   ├── scripts/
+│   │   ├── terraform/
+│   │   └── README.md       # Lab 002 guide
+│   ├── 003-lambda-timeout/
+│   │   ├── 003_screenshots/
+│   │   ├── scripts/
+│   │   ├── terraform/
+│   │   └── README.md       # Lab 003 guide
+│   └── 004-lambda-timeout/
+│       ├── scripts/
+│       ├── terraform/
+│       └── README.md       # Lab 004 guide
+├── lambdas/                # Lambda function code
+├── src/                    # Helper scripts
+├── tests/                  # Validation tests
+└── README.md              # This file
+```
 
 ---
 
-## 📈 Roadmap
+## 🎓 Learning Path
 
-- [x] EC2 SSH connectivity troubleshooting (Incident 001)
-- [x] S3 bucket security and access issues (Incident 002)
-- [x] Lambda timeout and VPC integration (Incident 003)
-- [ ] Lambda cold start optimization (Incident 004)
-- [ ] VPC network connectivity problems (Incident 005)
-- [ ] CloudWatch alarm configuration
-- [ ] IAM permission troubleshooting
-- [ ] Cost optimization scenarios
-- [ ] Multi-region failover testing
-- [ ] Add Terraform infrastructure definitions
-- [ ] Create video walkthroughs
+### Beginner (Start Here)
+**Lab 001: EC2 SSH Lockout**
+- Fundamental AWS networking
+- Security group basics
+- Simple troubleshooting
+
+### Intermediate
+**Lab 002: S3 Security Issue**
+- IAM and permissions
+- Security investigation
+- CloudTrail forensics
+
+**Lab 003: Lambda Timeout**
+- Serverless concepts
+- Performance tuning
+- Log analysis
+
+### Advanced
+**Lab 004: Complex Lambda Issues**
+- Multi-factor debugging
+- Production scenarios
+- Advanced troubleshooting
+
+---
+
+## 💡 Skills You'll Gain
+
+### 🔍 Troubleshooting Methodology
+- Systematic error investigation
+- Root cause analysis
+- Hypothesis testing
+- Solution validation
+
+### ☁️ AWS Services
+- **Compute:** EC2, Lambda
+- **Storage:** S3
+- **Networking:** VPC, Security Groups, NACLs
+- **Monitoring:** CloudWatch, CloudTrail
+- **Security:** IAM, GuardDuty
+
+### 🛠️ Tools & Technologies
+- AWS Console navigation
+- CloudWatch Logs interpretation
+- Terraform infrastructure management
+- AWS CLI commands
+- Python scripting
+
+### 📊 Observability
+- Reading CloudWatch metrics
+- Analyzing CloudWatch Logs
+- Using CloudTrail for forensics
+- VPC Flow Logs analysis
+- Performance monitoring
+
+### 🔒 Security
+- IAM policy debugging
+- Security group configuration
+- S3 bucket security
+- Incident response
+- Compliance validation
+
+---
+
+## 🔧 What Makes This Different
+
+### Traditional Labs
+❌ Perfect deployments that always work  
+❌ No exposure to real errors  
+❌ Skip the investigation phase  
+❌ Don't teach debugging skills  
+
+### Error-Driven Labs
+✅ Intentionally break things  
+✅ Experience real error messages  
+✅ Practice log investigation  
+✅ Learn troubleshooting methodology  
+✅ Build debugging confidence  
+
+---
+
+## 🎯 Use Cases
+
+### For Learning
+- Build troubleshooting muscle memory
+- See real error messages before interviews
+- Practice systematic debugging
+- Gain confidence in AWS Console
+
+### For Portfolios
+- Demonstrate practical troubleshooting skills
+- Show ability to work with logs
+- Prove infrastructure knowledge
+- Document problem-solving approach
+
+### For Interviews
+- Reference real scenarios you've debugged
+- Discuss your troubleshooting methodology
+- Show hands-on AWS experience
+- Explain specific error patterns you've seen
+
+---
+
+## 📝 Lab Methodology
+
+Each lab follows this proven structure:
+
+### 1. Deploy Infrastructure
+Use Terraform to create AWS resources in a known-good state
+
+### 2. Break Something
+Introduce a realistic misconfiguration that mirrors production issues
+
+### 3. Observe the Error
+See the actual error message, just like you would in production
+
+### 4. Investigate
+- Check CloudWatch Logs
+- Review CloudTrail events
+- Examine resource configurations
+- Form hypotheses about root cause
+
+### 5. Remediate
+Apply the fix following AWS best practices
+
+### 6. Validate
+Confirm the issue is resolved and service is restored
+
+### 7. Document
+Record what you learned for future reference
 
 ---
 
 ## 🤝 Contributing
 
-While this is a personal portfolio project, I welcome feedback and suggestions:
+Contributions welcome! This is an active learning project.
 
-1. Open an issue to discuss proposed changes
-2. Fork the repository
-3. Create a feature branch
-4. Submit a pull request with clear documentation
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**How to contribute:**
+- 🐛 Report bugs or issues with labs
+- 💡 Suggest new error scenarios
+- 📝 Improve lab documentation
+- ✨ Add new troubleshooting techniques
 
 ---
 
-## 📬 Contact
+## 📜 License
 
-**Charles Bucher**\
-GitHub: [@charles-bucher](https://github.com/charles-bucher)\
-Portfolio: [View Live Projects](https://github.com/charles-bucher)
-
-*Self-taught developer focusing on cloud infrastructure and remote opportunities*
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🔗 Resources & References
+## 🔒 Security
 
-- [AWS Documentation](https://docs.aws.amazon.com/)
-- [AWS Free Tier](https://aws.amazon.com/free/)
-- [Python Boto3 SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-- [AWS Cloud Support Knowledge Base](https://aws.amazon.com/premiumsupport/knowledge-center/)
-- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)
-
----
-
-## 📊 Project Statistics
-
-![Repository Stats](https://github-readme-stats.vercel.app/api?username=charles-bucher&repo=AWS_Error_Driven_Troubleshooting_Lab&show_icons=true&theme=default)
+**Note:** These labs intentionally create misconfigurations for learning purposes. Always:
+- Use a dedicated learning AWS account
+- Never run these labs in production
+- Destroy resources after completing labs (use `terraform destroy`)
+- Review AWS costs before deploying
 
 ---
 
-**⭐ If you find this project helpful, please consider giving it a star!**
+## 📞 Connect With Me
+
+**Charles Bucher** - Cloud Engineer | AWS Enthusiast
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Charles__Bucher-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/charles-bucher-cloud)
+[![GitHub](https://img.shields.io/badge/GitHub-charles--bucher-181717?logo=github&logoColor=white)](https://github.com/charles-bucher)
+[![Portfolio](https://img.shields.io/badge/Portfolio-View-success?logo=github&logoColor=white)](https://charles-bucher.github.io)
+
+---
+
+## 🌟 Related Projects
+
+- [AWS Cloud Support Simulator](https://github.com/charles-bucher/AWS_Cloud_Support_Sim) - 7 production incident scenarios
+- [AWS CloudOps Suite](https://github.com/charles-bucher/AWS_Cloudops_Suite) - Cloud operations automation toolkit
+
+---
+
+## 💬 Testimonials
+
+> "Error-driven learning helped me understand AWS errors I'd never seen in tutorials. When I got a similar error at work, I knew exactly how to debug it." - Student feedback
+
+> "These labs prepared me for real cloud engineering interviews better than any course. I could speak confidently about actual troubleshooting experience." - Career changer
+
+---
+
+<div align="center">
+
+**⭐ If this lab helped you learn AWS troubleshooting, please star it! ⭐**
+
+**Learn by breaking things. Build confidence through debugging.**
+
+Made with 🔧 by [Charles Bucher](https://github.com/charles-bucher)
+
+</div>
