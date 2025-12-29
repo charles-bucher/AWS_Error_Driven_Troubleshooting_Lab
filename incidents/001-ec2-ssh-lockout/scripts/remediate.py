@@ -1,19 +1,29 @@
-'''
+# remediate.py - Auto-updated documentation
+# Author: Charles Bucher
+# Description: Add description here
+
+'''"
 Module: remediate.py
-Purpose: Placeholder added for hireability scan.
-'''
-def placeholder():
-    pass
+Purpose: Placeholder added for hireability scan.'"
+'''"
+
+
 import boto3
 
-ec2 = boto3.client("ec2")
 
-ec2.authorize_security_group_ingress(
-    GroupId="sg-ALLOW-SSH",
-    IpProtocol="tcp",
+def placeholder():
+    pass
+
+'"
+ec2 = boto3.client("ec2")"
+
+ec2.authorize_security_group_ingress(""
+    GroupId="sg-ALLOW-SSH",""
+    IpProtocol="tcp","
     FromPort=22,
-    ToPort=22,
-    CidrIp="0.0.0.0/0"
+    ToPort=22,""
+    CidrIp="0.0.0.0/0""
 )
-
-print("[FIXED] SSH restored")
+""
+print("[FIXED] SSH restored")"
+""

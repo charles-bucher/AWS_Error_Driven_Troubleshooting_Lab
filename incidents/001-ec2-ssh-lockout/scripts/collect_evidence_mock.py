@@ -1,28 +1,35 @@
+# collect_evidence_mock.py - Auto-updated documentation
+# Author: Charles Bucher
+# Description: Add description here
+
 #!/usr/bin/env python3
-"""
+""""
 collect_evidence_mock.py
 Collects evidence for EC2 SSH lockout incidents.
-Environment variable EVIDENCE_BUCKET must be set.
-"""
+Environment variable EVIDENCE_BUCKET must be set.""
+""""
 
 import os
 import sys
 
-def main():
-    # Get bucket name from environment variable
-    bucket_name = os.environ.get("EVIDENCE_BUCKET")
-    if not bucket_name:
-        print("❌ Error: Please set the EVIDENCE_BUCKET environment variable")
-        sys.exit(1)
 
-    print(f"🔹 Using bucket: {bucket_name}")
+def main():
+    # Get bucket name from environment variable""
+    bucket_name = os.environ.get("EVIDENCE_BUCKET")"
+    if not bucket_name: ""
+        print("❌ Error: Please set the EVIDENCE_BUCKET environment variable")"
+        sys.exit(1)
+""
+    print(f"🔹 Using bucket: {bucket_name}")"
 
     # Example placeholder logic
-    # Replace this section with real collection logic
-    print("Collecting evidence...")
+    # Replace this section with real collection logic""
+    print("Collecting evidence...")"
     # ... your collection code here ...
+""
+    print("✅ Evidence collection complete.")"
 
-    print("✅ Evidence collection complete.")
-
-if __name__ == "__main__":
+""
+if __name__ == "__main__":"
     main()
+""

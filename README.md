@@ -541,3 +541,46 @@ Made with 🔧 for cloud engineers by cloud engineers
 ## 📋 Keywords for ATS/Search
 
 AWS troubleshooting, cloud engineer portfolio, AWS labs, Terraform tutorial, Lambda debugging, EC2 networking, S3 security, CloudWatch Logs, AWS hands-on practice, Infrastructure as Code, cloud support engineer, DevOps projects, AWS certification prep, entry-level cloud engineer, junior cloud engineer projects, AWS Solutions Architect, troubleshooting methodology, root cause analysis, production debugging, serverless debugging, VPC networking, IAM policies, CloudTrail forensics, AWS Well-Architected Framework, site reliability engineering, cloud operations, AWS monitoring, error handling, incident response, AWS CLI, boto3, Python AWS, Terraform AWS, cloud infrastructure, AWS Free Tier, learn AWS, AWS career change
+## Deployment
+Content to be added.
+
+## Tech Stack
+Content to be added.
+
+## Incident Scenarios
+Example incidents and how this project addresses them.
+
+## Setup Instructions
+1. Clone the repo
+2. Install dependencies (`pip install -r requirements.txt` or as needed)
+3. Configure environment variables if required
+4. Run scripts or tests
+
+## Usage Examples
+```bash
+python script_name.py --example-arg value
+```
+Replace with actual usage commands for this repo.
+
+## Screenshots
+Include screenshots of outputs, dashboards, or any UI here. Example:
+![Example](path_to_screenshot.png)
+
+## Contact
+Reach me at your-email@example.com or GitHub: https://github.com/Charles-Bucher
+
+
+## Overview
+_TODO: Describe this section._
+
+
+## Features
+_TODO: Describe this section._
+
+
+## Skills Demonstrated
+_TODO: Describe this section._
+
+
+## License
+_TODO: Describe this section._
