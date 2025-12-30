@@ -102,7 +102,7 @@ AWS_Error_Driven_Troubleshooting_Lab/
 
 ### 🔴 Lab 001: EC2 SSH Connection Timeout
 
-![SSH Error](incidents/001-ec2-ssh-lockout/001_screenshots/ssh-error.png)
+![Security Group Misconfiguration](incidents/001-ec2-ssh-lockout/001_screenshots/04_security_group_rules.png)
 
 **Error Message:**
 ```
@@ -127,7 +127,7 @@ EC2 instance deployed successfully but SSH connections time out. Investigate sec
 
 ### 🟠 Lab 002: S3 Bucket Accidentally Public
 
-![Public Access Warning](incidents/002-s3-public-bucket/002_screenshots/public-access-warning.png)
+![S3 Bucket Misconfiguration](incidents/002-s3-public-bucket/002_screenshots/02_bucket_misconfiguration.png)
 
 **Error Message:**
 ```
@@ -152,7 +152,7 @@ A misconfigured S3 bucket policy exposed sensitive data to the public internet. 
 
 ### 🟡 Lab 003: Lambda Function Timeout
 
-![Lambda Timeout Error](incidents/003-lambda-timeout/003_screenshots/timeout-error.png)
+![Lambda Failure Simulation](incidents/003-lambda-timeout/003_screenshots/03_simulate_failure.png)
 
 **Error Message:**
 ```
