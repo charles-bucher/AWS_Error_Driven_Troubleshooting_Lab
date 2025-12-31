@@ -626,6 +626,11 @@ AWS Cloud Support & DevOps Engineer
 
 ---
 
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
 ## Support This Project
 
 If this lab helped you:
