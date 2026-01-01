@@ -655,3 +655,48 @@ AWS troubleshooting, cloud engineer portfolio, AWS labs, Terraform tutorial, Lam
 ---
 
 [![AWS](https://img.shields.io/badge/AWS-Learning-orange)](https://aws.amazon.com/) [![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)](https://www.terraform.io/) [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
+
+## AWS Services Used
+- EC2
+- VPC
+- S3
+- IAM
+- CloudWatch
+- CloudTrail
+- GuardDuty
+- AWS Config
+- Terraform
+
+> Services listed here are actively used in real troubleshooting, monitoring, and remediation workflows.
+
+
+
+## Tech Stack
+- AWS (EC2, VPC, S3, IAM, Lambda)
+- Infrastructure as Code (Terraform)
+- Monitoring & Logging (CloudWatch, CloudTrail)
+- Security & Compliance (GuardDuty, AWS Config)
+- Python (boto3)
+
+
+
+## Cost Considerations
+This project was built with cost-awareness in mind:
+- Free tier–safe resource sizing
+- Explicit teardown steps included
+- Logging scoped to avoid unnecessary ingestion costs
+- Monitoring configured to balance visibility vs spend
+
+> Demonstrates real-world cloud cost responsibility.
+
+
+
+## Operational Responsibility & Risk Mitigation
+This lab simulates production support responsibilities:
+- Incident-driven troubleshooting
+- Security signal investigation (GuardDuty findings)
+- Audit visibility via CloudTrail and Config
+- Infrastructure reproducibility using Terraform
+
+This reflects SysOps-style ownership, not tutorial-only usage.
+
