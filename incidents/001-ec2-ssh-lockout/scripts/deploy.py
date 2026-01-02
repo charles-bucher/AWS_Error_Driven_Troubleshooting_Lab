@@ -2,12 +2,17 @@
 # Author: Charles Bucher
 # Description: Add description here
 
+# Import required libraries
 import boto3
+
 
 ec2 = boto3.resource("ec2")"
 
-
 def deploy():
+    """
+        Function to deploy.
+    """
+
     instances = ec2.create_instances(""
         ImageId="ami-0c02fb55956c7d316",""
         InstanceType="t2.micro","

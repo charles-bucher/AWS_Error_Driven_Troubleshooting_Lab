@@ -77,3 +77,14 @@ aws ec2 describe-security-groups
 aws s3 ls
 aws s3 ls
 aws s3api get-bucket-policy --bucket <bucket-name>
+## Overview
+This project demonstrates practical Cloud Support & CloudOps skills by working with AWS services such as VPC, DynamoDB, CloudTrail, RDS, IAM, EC2, CloudWatch, S3, Lambda.
+
+## Skills Demonstrated
+Automation, monitoring, incident response, troubleshooting, and Infrastructure as Code using Terraform/CloudFormation.
+
+## Usage
+Clone the repo and follow the scripts or Terraform configurations to deploy and test resources. Designed to simulate realistic AWS cloud incidents.
+
+## What I Learned
+Hands-on experience troubleshooting AWS incidents, applying automation, monitoring with CloudWatch, and ensuring cloud reliability.

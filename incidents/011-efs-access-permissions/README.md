@@ -104,3 +104,9 @@ Copy code
 ✅ Configuring security groups for NFS access  
 ✅ Managing POSIX file system permissions  
 ✅ Validating secure and functional file system access in AWS
+
+## Usage
+Clone the repo and follow the scripts or Terraform configurations to deploy and test resources. Designed to simulate realistic AWS cloud incidents.
+
+## What I Learned
+Hands-on experience troubleshooting AWS incidents, applying automation, monitoring with CloudWatch, and ensuring cloud reliability.

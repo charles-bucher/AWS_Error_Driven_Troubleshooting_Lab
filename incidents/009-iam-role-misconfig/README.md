@@ -90,3 +90,8 @@ Copy code
 ✅ Applying least-privilege access principles  
 ✅ Using IAM Policy Simulator for troubleshooting  
 ✅ Validating permissions with CloudWatch and real-world tests
+## Usage
+Clone the repo and follow the scripts or Terraform configurations to deploy and test resources. Designed to simulate realistic AWS cloud incidents.
+
+## What I Learned
+Hands-on experience troubleshooting AWS incidents, applying automation, monitoring with CloudWatch, and ensuring cloud reliability.

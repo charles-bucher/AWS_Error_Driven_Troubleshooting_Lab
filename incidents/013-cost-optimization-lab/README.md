@@ -95,3 +95,6 @@ Copy code
 ✅ Identifying and remediating idle or underutilized resources  
 ✅ Implementing cost-saving strategies (right-sizing, lifecycle policies)  
 ✅ Automating cost monitoring and reporting
+
+## What I Learned
+Hands-on experience troubleshooting AWS incidents, applying automation, monitoring with CloudWatch, and ensuring cloud reliability.

@@ -8,10 +8,15 @@ Purpose: Placeholder added for hireability scan.'"
 '''"
 
 
+# Import required libraries
 import boto3
 
 
 def placeholder():
+    """
+        Function to placeholder.
+    """
+
     pass
 
 '"
