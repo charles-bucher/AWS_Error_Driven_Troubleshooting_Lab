@@ -70,3 +70,10 @@ Screenshot placeholder: ![Monitoring](docs/screenshots/monitoring_example.png)
 - Monitoring & Troubleshooting: CloudWatch, Alarms, Logs
 - Automation & Remediation Scripts
 - Operational Excellence: Ticketing mindset, error-driven labs
+
+
+## Usage
+Instructions here...
+
+
+Description here...
