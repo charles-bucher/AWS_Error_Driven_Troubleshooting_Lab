@@ -1,40 +1,4 @@
-**Role:** Cloud Support & CloudOps Engineer
-**Skills:** AWS (EC2, S3, Lambda, VPC), Python, Terraform, CloudFormation, CloudWatch, IAM, SNS/SQS, CI/CD, Monitoring, Automation, Troubleshooting
-**Portfolio:** https://charles-bucher.github.io
-**GitHub:** https://github.com/charles-bucher
-
-# AWS SDK
-boto3>=1.34.0
-botocore>=1.34.0
-
-# CLI Tools
-awscli>=1.32.0
-
-# Testing
-pytest>=8.0.0
-pytest-cov>=4.1.0
-pytest-mock>=3.12.0
-moto>=5.0.0
-
-# Code Quality
-pylint>=3.0.0
-black>=24.0.0
-flake8>=7.0.0
-isort>=5.13.0
-
-# Type Checking
-mypy>=1.8.0
-types-boto3>=1.0.0
-
-# Utilities
-python-dotenv>=1.0.0
-requests>=2.31.0
-pyyaml>=6.0
-click>=8.1.0
-
-# Logging
-colorlog>=6.8.0
-
-# Documentation
-sphinx>=7.2.0
-sphinx-rtd-theme>=2.0.0
+# Add Python dependencies here
+boto3
+requests
+pytest
