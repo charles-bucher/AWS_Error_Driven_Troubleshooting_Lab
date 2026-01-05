@@ -1,0 +1,85 @@
+# Runbook: Lambda Timeout Issue  
+**Scenario:** 003-lambda-timeout  
+**Author:** Charles Bucher  
+**Date:** 2026-01-05  
+**AWS Services:** Lambda, CloudWatch, IAM, VPC (if applicable)  
+
+---
+
+## 1. Issue Summary
+The Lambda function is experiencing **timeout errors** during execution.  
+Symptoms observed:  
+- Lambda execution fails after the configured timeout (e.g., 3s, 10s)  
+- CloudWatch Logs show partial execution or missing logs  
+- Downstream services may not receive expected data  
+
+---
+
+## 2. Impact
+- End users or downstream processes may fail  
+- Automation pipelines depending on Lambda may be broken  
+- Increased AWS billing if retries or invocations increase  
+
+---
+
+## 3. Root Cause Analysis
+Potential causes for Lambda timeouts:  
+1. **Long-running code** exceeding timeout  
+2. **Blocking external calls** (e.g., API calls, DB queries)  
+3. **Misconfigured VPC/subnet** preventing Lambda from reaching resources  
+4. **Insufficient memory allocation** causing CPU throttling  
+
+Investigation steps performed:  
+- Reviewed CloudWatch Logs for execution duration and errors  
+- Checked Lambda configuration for timeout and memory settings  
+- Tested network access to external resources (VPC/subnet, security groups)  
+- Reviewed recent deployment changes  
+
+Root cause identified:  
+> Lambda function running in a VPC without proper subnet routing, causing network calls to hang until timeout.  
+
+---
+
+## 4. Remediation Steps
+
+1. **Update Lambda configuration**  
+   - Ensure function has correct **VPC, subnet, and security group**  
+   - Adjust **timeout** and **memory allocation** if function legitimately requires more resources  
+
+2. **Validate external calls**  
+   - Test API calls or database connections from Lambda  
+   - Use `curl` or `boto3` scripts in a temporary test Lambda to verify network access  
+
+3. **Deploy fixes**  
+   - Update function via AWS Console, CloudFormation, or Terraform  
+   - Redeploy and test function execution  
+
+4. **Monitor post-remediation**  
+   - Confirm execution duration in CloudWatch  
+   - Check logs for errors and ensure downstream processes complete  
+
+---
+
+## 5. Prevention & Best Practices
+- Always **set realistic timeout** based on expected execution duration  
+- Test Lambda in the **same VPC/subnet** configuration as production  
+- Use **CloudWatch alarms** to detect frequent timeouts  
+- Consider **Lambda destinations** or **DLQ** for failed invocations  
+
+---
+
+## 6. References / Supporting Materials
+- **Scripts:** `scripts/fix_lambda_timeout.ps1`  
+- **Screenshots:**  
+  - `docs/screenshots/03_lambda_functions.png`  
+  - `docs/screenshots/lambda_timeout_cloudwatch.png`  
+
+---
+
+## 7. Notes / Lessons Learned
+- VPC misconfigurations are common root causes for Lambda networking issues  
+- Monitoring logs early helps prevent prolonged outages  
+- Automating Lambda configuration checks can reduce human error  
+
+---
+

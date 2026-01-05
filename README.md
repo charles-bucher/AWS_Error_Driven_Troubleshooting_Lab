@@ -20,6 +20,26 @@
 
 **Real-world AWS incident response and troubleshooting scenarios**
 
+---
+
+## 📑 Table of Contents
+
+- [🎯 Project Purpose](#-project-purpose)
+- [🛠️ Technical Skills Demonstrated](#️-technical-skills-demonstrated)
+- [📁 Repository Structure](#-repository-structure)
+- [🚀 Quick Start](#-quick-start)
+- [📸 Lab Screenshots](#-lab-screenshots)
+- [📋 Available Scenarios](#-available-scenarios)
+- [🔍 Learning Approach](#-learning-approach)
+- [📚 Runbook Examples](#-runbook-examples)
+- [🎓 Why This Approach Works](#-why-this-approach-works)
+- [🏗️ Built With](#️-built-with)
+- [📊 Lab Metrics](#-lab-metrics)
+- [🙋‍♂️ About Me](#️-about-me)
+- [📧 Contact](#-contact)
+
+---
+
 This repository demonstrates hands-on cloud support skills through intentionally broken AWS environments. Each scenario simulates actual production issues requiring log analysis, metrics interpretation, root cause identification, and remediation—mirroring the daily work of cloud support engineers and SREs.
 
 ## 🎯 Project Purpose
@@ -131,17 +151,47 @@ cat ../../runbooks/01_lambda_s3_troubleshooting.md
 python cleanup.py
 ```
 
+## 📸 Lab Screenshots
+
+**Deployment & Setup:**
+
+![AWS CLI Identity Check](docs/screenshots/02_aws_cli_identity.png)
+*AWS CLI configured and ready - verifying account access*
+
+![S3 Buckets Created](docs/screenshots/03_s3_buckets.png)
+*S3 buckets deployed for troubleshooting scenarios*
+
+![Lambda Functions](docs/screenshots/04_lambda_functions.png)
+*Lambda functions deployed - intentionally misconfigured for practice*
+
+**Troubleshooting in Action:**
+
+![Lab Fix Execution](docs/screenshots/05_ps_lab_fix_execution.png)
+*PowerShell script executing remediation steps*
+
+![Deploy Output](docs/screenshots/01_deploy_output.png)
+*Initial deployment showing expected errors*
+
+> **Note:** All screenshots are from my actual AWS account (Account ID: 722631436033, Region: us-east-1). No stock images or tutorial screenshots - just real troubleshooting work.
+
 ## 📋 Available Scenarios
 
 Each scenario is production-realistic and requires systematic troubleshooting:
 
-| Scenario | AWS Services | Skills Practiced |
-|----------|-------------|------------------|
-| Lambda Permission Denied | Lambda, S3, IAM | IAM policy debugging, CloudWatch log analysis |
-| EC2 Connection Timeout | EC2, VPC, Security Groups | Network troubleshooting, security group rules |
-| S3 Access Denied | S3, IAM, Bucket Policies | S3 permissions, bucket policy debugging |
-| Lambda Timeout | Lambda, VPC, CloudWatch | Performance troubleshooting, timeout investigation |
-| *More scenarios in development* | | |
+| Scenario | AWS Services | Skills Practiced | Difficulty | Folder |
+|----------|-------------|------------------|------------|--------|
+| Lambda Permission Denied | Lambda, S3, IAM | IAM policy debugging, CloudWatch log analysis | ⭐⭐ Beginner | [📁](incidents/01_lambda_s3_permission_denied) |
+| EC2 Connection Timeout | EC2, VPC, Security Groups | Network troubleshooting, security group rules | ⭐⭐ Beginner | [📁](incidents/02_ec2_connection_timeout) |
+| S3 Access Denied | S3, IAM, Bucket Policies | S3 permissions, bucket policy debugging | ⭐⭐⭐ Intermediate | [📁](incidents/03_s3_access_denied) |
+| Lambda Timeout | Lambda, VPC, CloudWatch | Performance troubleshooting, timeout investigation | ⭐⭐⭐ Intermediate | [📁](incidents/04_lambda_timeout) |
+
+**Coming Soon:**
+- EC2 Instance Store Data Loss
+- RDS Connection Pool Exhaustion
+- API Gateway 502 Bad Gateway
+- CloudFront Cache Invalidation Issues
+
+> **💡 Tip:** Start with the "Beginner" scenarios if you're new to AWS troubleshooting. Each incident includes a `scenario.md` file explaining the problem and an `expected_errors.txt` showing what you should see.
 
 ## 🔍 Learning Approach
 
@@ -157,6 +207,62 @@ This lab follows an **error-driven learning** model:
 
 This mirrors actual cloud support work where you receive a ticket, investigate logs, identify root cause, implement a fix, and document the incident.
 
+### 💡 Example Workflow:
+
+```bash
+# 1. Navigate to a scenario
+cd incidents/01_lambda_s3_permission_denied/
+
+# 2. Read the scenario description
+cat scenario.md
+
+# 3. Deploy the broken environment
+python deploy.py
+# Output: Resources deployed. Lambda will fail with permission errors.
+
+# 4. Investigate using AWS CLI
+aws lambda get-function --function-name troubleshooting-lambda
+aws logs tail /aws/lambda/troubleshooting-lambda --follow
+
+# 5. Identify the root cause
+# (IAM role missing S3 permissions)
+
+# 6. Implement the fix
+aws iam attach-role-policy \
+  --role-name lambda-execution-role \
+  --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+
+# 7. Validate the fix
+python test_fix.py
+# Output: ✅ Lambda executed successfully
+
+# 8. Document your findings
+# Compare with: cat ../../runbooks/01_lambda_s3_troubleshooting.md
+
+# 9. Clean up resources
+python cleanup.py
+```
+
+### 💰 Lab Costs
+
+**Estimated AWS costs per scenario:**
+
+| Resource | Cost | Notes |
+|----------|------|-------|
+| Lambda executions | ~$0.01 | First 1M requests free |
+| S3 storage | ~$0.05 | Minimal test data |
+| EC2 instances (t3.micro) | ~$0.10/hr | Stop when not using |
+| CloudWatch Logs | ~$0.02 | 5GB free tier |
+| **Total per scenario** | **~$0.20-$0.50** | If cleaned up after |
+
+**Monthly estimate:** ~$10-15 if actively learning (2-3 scenarios/week)
+
+**💡 Cost Saving Tips:**
+- Always run `cleanup.py` after each scenario
+- Use AWS Budgets to set $15/month alert
+- Stop EC2 instances when not troubleshooting
+- Free Tier covers most Lambda/S3 usage
+
 ## 📚 Runbook Examples
 
 Each runbook follows a standard incident response format:
@@ -171,6 +277,20 @@ Each runbook follows a standard incident response format:
 
 These demonstrate the ability to create clear, actionable documentation—a critical skill for cloud support roles.
 
+### 📚 Sample Runbooks:
+
+- [RB-001: Lambda S3 Permission Troubleshooting](runbooks/01_lambda_s3_troubleshooting.md)
+- [RB-002: EC2 Connection Timeout Debugging](runbooks/02_ec2_connection_timeout.md)
+- [RB-003: S3 Access Denied Investigation](runbooks/03_s3_access_denied.md)
+- [View All Runbooks →](runbooks/)
+
+### 🔍 Sample Incidents:
+
+- [INC-001: Lambda Permission Denied Error](incidents/01_lambda_s3_permission_denied/)
+- [INC-002: EC2 Security Group Misconfiguration](incidents/02_ec2_connection_timeout/)
+- [INC-003: S3 Bucket Policy Conflict](incidents/03_s3_access_denied/)
+- [View All Incidents →](incidents/)
+
 ## 🎓 Why This Approach Works
 
 Traditional labs show you how to build things correctly. This lab shows you how to **fix things when they break**—which is 80% of cloud operations work.
@@ -182,6 +302,35 @@ Traditional labs show you how to build things correctly. This lab shows you how 
 - ✅ Documentation skills (runbooks, incident reports)
 - ✅ Automation (scripts to detect, diagnose, and remediate issues)
 
+### 💼 What Hiring Managers See Here:
+
+**Instead of:** *"I passed the AWS SAA exam"*  
+**You see:** *"Here are 4+ real incidents I investigated, diagnosed, and fixed"*
+
+**Instead of:** *"I know Python and boto3"*  
+**You see:** *"Here are 15+ scripts I wrote to automate AWS troubleshooting"*
+
+**Instead of:** *"I can work independently"*  
+**You see:** *"I built this entire lab on my own while working full-time"*
+
+**Instead of:** *"I document my work"*  
+**You see:** *"Here are 10+ runbooks written to production standards"*
+
+### 🎯 This Lab Proves I Can:
+
+| Cloud Support Skill | Evidence in This Repo |
+|---------------------|----------------------|
+| **Read AWS logs** | Every scenario requires CloudWatch log analysis |
+| **Debug IAM permissions** | Multiple IAM-related incidents documented |
+| **Troubleshoot systematically** | Runbooks show step-by-step investigation |
+| **Use AWS CLI** | All remediation uses CLI commands |
+| **Write documentation** | 10+ runbooks in production format |
+| **Automate with Python** | 15+ boto3 scripts for deployment/testing |
+| **Work independently** | Self-taught, self-directed learning |
+| **Handle incidents** | Full incident response workflow demonstrated |
+
+**For staffing agencies:** This is exactly what your clients need for entry-level cloud support contracts—someone who can investigate tickets, read logs, and fix issues without extensive hand-holding.
+
 ## 🏗️ Built With
 
 - **Python 3.9** - Primary scripting language for AWS automation
@@ -189,6 +338,39 @@ Traditional labs show you how to build things correctly. This lab shows you how 
 - **AWS CLI** - Command-line interface for AWS services
 - **PowerShell 7** - Windows-based AWS management scripts
 - **GitHub Actions** - CI/CD for automated testing
+
+## 📚 Learning Resources Used
+
+**Free Resources I Used to Build This:**
+- [AWS Documentation](https://docs.aws.amazon.com/) - Official service documentation
+- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/) - Best practices
+- [boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) - Python AWS SDK
+- [AWS CLI Reference](https://docs.aws.amazon.com/cli/latest/index.html) - Command-line tools
+- AWS re:Post - Community troubleshooting forums
+- Stack Overflow - Specific error resolution
+
+**Paid Resources:** $0 - Everything is free except AWS usage (~$15/month)
+
+**No paid courses, no bootcamps, no hand-holding.** Just documentation, practice, and determination.
+
+## 🎯 Why This Lab Is Different
+
+### Most "Learning Projects":
+- ❌ Follow step-by-step tutorials that always work
+- ❌ Copy/paste code without understanding
+- ❌ Never encounter real errors
+- ❌ Skip documentation entirely
+- ❌ Focus on deployment, not troubleshooting
+
+### This Lab:
+- ✅ **Intentionally breaks things** to learn troubleshooting
+- ✅ **Requires investigation** - no solutions provided upfront
+- ✅ **Mirrors real incidents** - same errors you'd see in production
+- ✅ **Documents everything** - runbooks, incidents, RCAs
+- ✅ **Focuses on fixing** - 80% of cloud ops is troubleshooting
+
+> *"Anyone can follow a tutorial. This lab proves you can figure things out when the tutorial is wrong."*  
+> — The hiring manager mindset
 
 ## 🤝 Contributing
 
@@ -203,9 +385,201 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Charles Bucher**
 - GitHub: [@charles-bucher](https://github.com/charles-bucher)
 - LinkedIn: [charles-bucher-cloud](https://linkedin.com/in/charles-bucher-cloud)
+- Email: Available on LinkedIn profile
+- Location: Largo, Florida (Tampa Bay Area)
 
-*This repository is part of my transition into cloud computing, demonstrating hands-on AWS troubleshooting capabilities for entry-level cloud support, cloud operations, or junior DevOps roles.*
+**Portfolio Projects:**
+- [AWS Error-Driven Troubleshooting Lab](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab) - This repository
+- [CloudOpsLab](https://github.com/charles-bucher/CloudOpsLab) - Monitoring & automation
+
+---
+
+## 🤝 Contributing
+
+This is a personal learning project demonstrating cloud troubleshooting skills, but suggestions for additional scenarios are welcome!
+
+**Ways to help:**
+- 🐛 Report issues or suggest improvements
+- 💡 Suggest realistic troubleshooting scenarios
+- 📝 Improve documentation
+- ⭐ Star this repo if it helped you learn
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+**Inspiration:**
+- My wife and three kids depending on this career change
+- Need to prove skills through actual work, not just certs
+- The self-taught developer community
+
+**Tools:**
+- AWS Free Tier (made this possible)
+- Python & boto3 (automation power)
+- VS Code (development environment)
+- Git/GitHub (version control & portfolio hosting)
+
+---
+
+## ⭐ If This Helped You
+
+If this repo helped you learn AWS troubleshooting or gave you ideas for your own portfolio, please give it a star! It helps others find it.
+
+---
+
+<div align="center">
+
+**Built with ☕, Python, and determination**
+
+**Charles Bucher | Self-Taught Cloud Engineer**
+
+*"I can't fake experience, so I'm building proof instead"*
+
+![Profile Views](https://komarev.com/ghpvc/?username=charles-bucher&color=blueviolet&style=flat-square&label=Profile+Views)
+
+---
+
+**AWS Error-Driven Troubleshooting Lab**  
+Learning cloud support through real incidents, not tutorials
+
+**Status:** 🟢 Active | 💼 Open to Work | 📍 Florida
+
+---
+
+[⬆ Back to Top](#aws-error-driven-troubleshooting-lab)
+
+**Questions?** [Open an Issue](https://github.com/charles-bucher/AWS_Error_Driven_Troubleshooting_Lab/issues) or [Connect on LinkedIn](https://linkedin.com/in/charles-bucher-cloud)
+
+</div>
+
+## 📊 Lab Metrics
+
+```yaml
+name: Charles Bucher
+role: Self-Taught Cloud Engineer
+location: Largo, Florida
+status: Open to Work
+
+lab_stats:
+  scenarios_created: 4+
+  aws_services_used: 6
+  python_scripts: 15+
+  runbooks_documented: 10+
+  average_troubleshooting_time: 15-30 minutes
+  lab_hours: 50+
+  monthly_aws_cost: ~$15
+
+technical_skills:
+  - AWS (Lambda, S3, EC2, IAM, VPC, CloudWatch)
+  - Python (boto3, automation)
+  - PowerShell (Windows management)
+  - Bash (Linux troubleshooting)
+  - Git/GitHub (version control)
+
+currently_studying:
+  - AWS Solutions Architect Associate
+  - Advanced CloudWatch log analysis
+  - IAM policy troubleshooting
+
+ideal_roles:
+  - AWS Cloud Support Associate
+  - Junior Cloud Operations Engineer
+  - Entry-level SysOps Administrator
+  - Cloud Support Technician
+
+motivation: "Building proof of skills, not just collecting certs"
+```
+
+## 🚀 Recent Updates
+
+- **2025-01-05:** Added comprehensive README with badges and screenshots
+- **2025-01-04:** Organized scripts and runbooks into proper folder structure
+- **2024-12-20:** Initial commit with all incidents, scripts, and documentation
+
+[View Full Changelog](#) | [All Incidents](incidents/) | [All Runbooks](runbooks/)
 
 ---
 
 **💡 For Hiring Managers:** This project demonstrates practical cloud troubleshooting skills beyond certifications. Each scenario requires the same systematic approach used in production support: investigating logs, analyzing errors, identifying root causes, implementing fixes, and documenting solutions. These are day-one skills for cloud support engineers, SREs, and DevOps roles.
+
+## 🙋‍♂️ About Me
+
+**Charles Bucher**  
+*Self-Taught Cloud Engineer | Career Transition*
+
+I'm 40 years old, married with three kids (ages 12, 11, and 2). I work part-time delivery while teaching myself cloud engineering to provide better for my family.
+
+### Why This Lab Exists:
+
+Instead of just watching videos and reading docs, I'm:
+- ✅ Breaking AWS services intentionally to learn troubleshooting
+- ✅ Documenting everything like production systems
+- ✅ Building automation scripts to solve real problems
+- ✅ Creating runbooks that show my thought process
+
+### What I'm NOT:
+- ❌ A senior engineer pretending to be entry-level
+- ❌ Someone who just copied tutorials
+- ❌ A cert collector with no hands-on experience
+
+### What I AM:
+- ✅ Self-taught and learning every day
+- ✅ Honest about being entry-level
+- ✅ Willing to start small and prove myself
+- ✅ Ready to outwork anyone for this opportunity
+
+### Current Status:
+- **Studying for:** AWS Solutions Architect Associate
+- **Looking for:** Entry-level Cloud Support / SysOps / Cloud Operations roles
+- **Location:** Largo, Florida (remote preferred)
+- **Salary expectations:** $50k-$65k (realistic for entry-level)
+
+### What I'm Open To:
+- Full-time W2 positions
+- Contract work through staffing agencies
+- Remote opportunities
+- Hybrid roles in Tampa Bay area
+
+**I Can Start:** Immediately - I'm ready to go
+
+### 💪 What Makes This Portfolio Work:
+
+**1. Proof Over Promises**
+- I don't ask you to believe I can do the job
+- I show you the actual work
+
+**2. Honest About Experience Level**
+- I'm not pretending to be senior
+- I'm proving I can handle entry-level work
+
+**3. Real Investment**
+- I'm spending my own money ($15/month)
+- I'm spending my own time (50+ hours)
+- This isn't a weekend project
+
+**4. Remote-Ready Skills**
+- All troubleshooting done via CLI/console
+- Documentation shows communication ability
+- Self-directed learning proves independence
+
+**5. Growth Trajectory**
+- Started with basic scenarios
+- Building complexity over time
+- Continuously adding new incidents
+
+### 🏆 For Employers Who Value Skills Over Background:
+
+This portfolio demonstrates:
+- ✅ **Work ethic** - Building this while working full-time delivery
+- ✅ **Determination** - Teaching myself without bootcamps or courses
+- ✅ **Accountability** - Documenting every step professionally
+- ✅ **Results** - Real AWS work, not just theory
+- ✅ **Growth mindset** - Learning from intentional failures
+
+**I'm not looking for sympathy. I'm looking for opportunity to prove what I can do.**
+
+Companies like Amazon, Accenture, IBM, and many staffing agencies actively hire entry-level cloud support roles and value skills-based portfolios like this. If you're one of them, let's talk.
+
+---
