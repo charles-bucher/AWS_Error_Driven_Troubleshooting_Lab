@@ -1,0 +1,61 @@
+# Error Runbook: <ERROR_NAME>
+
+## 1. Summary
+Short description of the error, affected service, and typical impact.
+
+## 2. Error Message
+Paste the exact error message or stack trace.
+
+## 3. Severity
+- Impact:
+- Environment:
+- User-facing? (Yes/No)
+
+## 4. Initial Triage
+- Reproduce the issue (if safe)
+- Validate AWS service health
+- Identify affected resources (ARNs, instance IDs, buckets, etc.)
+- Check CloudWatch logs and metrics
+
+## 5. Root Cause Analysis
+Break down the likely causes:
+- Permissions
+- Misconfiguration
+- Networking
+- Resource limits
+- Application logic
+- AWS service issues
+
+## 6. Troubleshooting Steps
+Step-by-step workflow:
+1. Validate…
+2. Check…
+3. Test…
+4. Confirm…
+
+Include CLI commands, AWS Console paths, and log locations.
+
+## 7. Remediation
+- Fix configuration
+- Update IAM policy
+- Adjust networking
+- Redeploy resource
+- Restart service
+- Roll back version
+
+## 8. Validation
+- Re-test workflow
+- Confirm logs are clean
+- Verify metrics normalize
+- Confirm user impact resolved
+
+## 9. Prevention
+- Add monitoring/alerts
+- Add guardrails (IAM, SCPs, config rules)
+- Improve documentation
+- Add automated tests
+
+## 10. References
+- AWS docs
+- Internal notes
+- Related incidents
