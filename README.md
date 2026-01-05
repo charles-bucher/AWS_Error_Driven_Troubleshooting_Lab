@@ -1,5 +1,23 @@
 # AWS Error-Driven Troubleshooting Lab
 
+![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-7+-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+
+![CloudWatch](https://img.shields.io/badge/CloudWatch-Logs-FF4F8B?style=flat-square&logo=amazon-aws)
+![Lambda](https://img.shields.io/badge/Lambda-Functions-FF9900?style=flat-square&logo=aws-lambda)
+![S3](https://img.shields.io/badge/S3-Storage-569A31?style=flat-square&logo=amazon-s3)
+![EC2](https://img.shields.io/badge/EC2-Compute-FF9900?style=flat-square&logo=amazon-ec2)
+![IAM](https://img.shields.io/badge/IAM-Security-DD344C?style=flat-square&logo=amazon-aws)
+![VPC](https://img.shields.io/badge/VPC-Networking-4A90E2?style=flat-square&logo=amazon-aws)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Charles_Bucher-0077B5?style=flat-square&logo=linkedin)](https://linkedin.com/in/charles-bucher-cloud)
+[![GitHub](https://img.shields.io/badge/GitHub-charles--bucher-181717?style=flat-square&logo=github)](https://github.com/charles-bucher)
+![Portfolio](https://img.shields.io/badge/Portfolio-Entry_Level_Cloud-4A90E2?style=flat-square)
+![Open to Work](https://img.shields.io/badge/Status-Open_to_Work-success?style=flat-square)
+
 **Real-world AWS incident response and troubleshooting scenarios**
 
 This repository demonstrates hands-on cloud support skills through intentionally broken AWS environments. Each scenario simulates actual production issues requiring log analysis, metrics interpretation, root cause identification, and remediation—mirroring the daily work of cloud support engineers and SREs.
