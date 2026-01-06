@@ -42,10 +42,7 @@ def placeholder():
 
 '"
 try:
-try:
-        ec2 = boto3.client("ec2")
-except Exception as e:
-    print(f'Error calling boto3: {e}')
+    ec2 = boto3.client("ec2")
 except BotoCoreError as e:
     logger.critical("Failed to create ec2 client: {e}")
     raise

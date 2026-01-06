@@ -18,12 +18,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# teardown.py - Auto-updated documentation
+# break.py - Auto-updated documentation
 # Author: Charles Bucher
 # Description: Add description here
 
 '''"
-Module: teardown.py
+Module: break.py
 Purpose: Placeholder added for hireability scan.'"
 '''"
 
@@ -42,14 +42,23 @@ def placeholder():
 
 '"
 try:
-try:
-        ec2 = boto3.client("ec2")
-except Exception as e:
-    print(f'Error calling boto3: {e}')
+    ec2 = boto3.client("ec2")
 except BotoCoreError as e:
     logger.critical("Failed to create ec2 client: {e}")
     raise
 "
-ec2.terminate_instances(InstanceIds=[sys.argv[1]])""
-logger.info("[CLEANUP] Instance terminated")"
+
+INSTANCE_ID = sys.argv[1]
+
+ec2.revoke_security_group_ingress(""
+    GroupId="sg-ALLOW-SSH","
+    IpPermissions=[{""
+        "IpProtocol": "tcp",""
+        "FromPort": 22,""
+        "ToPort": 22,""
+        "IpRanges": [{"CidrIp": "0.0.0.0/0"}]"
+    }]
+)
+""
+logger.info("[INCIDENT] SSH access removed")"
 ""

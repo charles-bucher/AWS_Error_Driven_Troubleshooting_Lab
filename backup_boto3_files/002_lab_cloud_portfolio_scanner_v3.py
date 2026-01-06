@@ -1,3 +1,23 @@
+
+from botocore.exceptions import ClientError, BotoCoreError
+
+def safe_aws_call(func, description="AWS call"):
+    try:
+        return func()
+    except ClientError as e:
+        logger.error(f"{description} failed: {e.response['Error']['Code']}")
+    except BotoCoreError as e:
+        logger.error(f"{description} SDK failure: {e}")
+    return None
+
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 Cloud Portfolio Scanner - Profile & Portfolio Aware Version
@@ -225,73 +245,73 @@ def scan_repository(repo_path, repo_name):
 # MAIN
 # =============================
 def main():
-    print(f"\n{Colors.HEADER}{Colors.BOLD}{'='*60}")
-    print("🚀 Cloud Portfolio Scanner v3.1")
-    print(f"{'='*60}{Colors.ENDC}")
-    print(f"Scanning directory: {Colors.OKCYAN}{REPOS_ROOT}{Colors.ENDC}\n")
+    logger.info(f"\n{Colors.HEADER}{Colors.BOLD}{'='*60}")
+    logger.info("🚀 Cloud Portfolio Scanner v3.1")
+    logger.info(f"{'='*60}{Colors.ENDC}")
+    logger.info(f"Scanning directory: {Colors.OKCYAN}{REPOS_ROOT}{Colors.ENDC}\n")
     
     results = {}
     scanned_count, skipped_count = 0, 0
     
     for item in os.listdir(REPOS_ROOT):
         if item in IGNORE_NAMES or item.startswith("."):
-            print(f"{Colors.WARNING}[SKIP] {item}{Colors.ENDC}")
+            logger.info(f"{Colors.WARNING}[SKIP] {item}{Colors.ENDC}")
             skipped_count += 1
             continue
         repo_path = os.path.join(REPOS_ROOT, item)
         if not os.path.isdir(repo_path): continue
         
         scanned_count += 1
-        print(f"\n{Colors.OKBLUE}{'='*60}")
-        print(f"📂 Scanning: {Colors.BOLD}{item}{Colors.ENDC}")
-        print(f"{Colors.OKBLUE}{'='*60}{Colors.ENDC}")
+        logger.info(f"\n{Colors.OKBLUE}{'='*60}")
+        logger.info(f"📂 Scanning: {Colors.BOLD}{item}{Colors.ENDC}")
+        logger.info(f"{Colors.OKBLUE}{'='*60}{Colors.ENDC}")
         
         result = scan_repository(repo_path, item)
         results[item] = result
         
-        print(f"{Colors.OKCYAN}Type:{Colors.ENDC} {result['Type']}")
-        print(f"{Colors.OKCYAN}README Score:{Colors.ENDC} {result['README Score']}%")
-        print(f"{Colors.OKCYAN}Cloud (Cert) Score:{Colors.ENDC} {result['Cloud (Cert) Score']}%")
-        print(f"{Colors.OKCYAN}Job Alignment Score:{Colors.ENDC} {result['Job Alignment Score']}%")
-        print(f"{Colors.OKCYAN}Documentation Score:{Colors.ENDC} {result['Documentation Score']}%")
+        logger.info(f"{Colors.OKCYAN}Type:{Colors.ENDC} {result['Type']}")
+        logger.info(f"{Colors.OKCYAN}README Score:{Colors.ENDC} {result['README Score']}%")
+        logger.info(f"{Colors.OKCYAN}Cloud (Cert) Score:{Colors.ENDC} {result['Cloud (Cert) Score']}%")
+        logger.info(f"{Colors.OKCYAN}Job Alignment Score:{Colors.ENDC} {result['Job Alignment Score']}%")
+        logger.info(f"{Colors.OKCYAN}Documentation Score:{Colors.ENDC} {result['Documentation Score']}%")
         
         score = result['TOTAL SCORE']
         if score >= 90: score_color = Colors.OKGREEN
         elif score >= 70: score_color = Colors.OKCYAN
         elif score >= 50: score_color = Colors.WARNING
         else: score_color = Colors.FAIL
-        print(f"{Colors.BOLD}TOTAL SCORE: {score_color}{score}%{Colors.ENDC}")
+        logger.info(f"{Colors.BOLD}TOTAL SCORE: {score_color}{score}%{Colors.ENDC}")
         
         if result['File Counts']:
-            print(f"\n{Colors.OKCYAN}📊 File Breakdown:{Colors.ENDC}")
+            logger.info(f"\n{Colors.OKCYAN}📊 File Breakdown:{Colors.ENDC}")
             for ftype, count in result['File Counts'].items():
-                print(f"  • {ftype}: {count}")
+                logger.info(f"  • {ftype}: {count}")
         
         if result['Suggestions']:
-            print(f"\n{Colors.WARNING}💡 Suggestions:{Colors.ENDC}")
+            logger.info(f"\n{Colors.WARNING}💡 Suggestions:{Colors.ENDC}")
             for s in result['Suggestions']:
-                if "solid" in s.lower(): print(f"  {Colors.OKGREEN}✅ {s}{Colors.ENDC}")
-                else: print(f"  • {s}")
+                if "solid" in s.lower(): logger.info(f"  {Colors.OKGREEN}✅ {s}{Colors.ENDC}")
+                else: logger.info(f"  • {s}")
     
-    print(f"\n{Colors.HEADER}{Colors.BOLD}{'='*60}")
-    print("📊 SCAN SUMMARY")
-    print(f"{'='*60}{Colors.ENDC}")
-    print(f"Total Repos Scanned: {Colors.OKGREEN}{scanned_count}{Colors.ENDC}")
-    print(f"Total Repos Skipped: {Colors.WARNING}{skipped_count}{Colors.ENDC}")
+    logger.info(f"\n{Colors.HEADER}{Colors.BOLD}{'='*60}")
+    logger.info("📊 SCAN SUMMARY")
+    logger.info(f"{'='*60}{Colors.ENDC}")
+    logger.info(f"Total Repos Scanned: {Colors.OKGREEN}{scanned_count}{Colors.ENDC}")
+    logger.info(f"Total Repos Skipped: {Colors.WARNING}{skipped_count}{Colors.ENDC}")
     
     if results:
         sorted_repos = sorted(results.items(), key=lambda x:x[1]["TOTAL SCORE"], reverse=True)
         top = sorted_repos[0]
-        print(f"\n{Colors.OKGREEN}🏆 Top Performing Repo:{Colors.ENDC}")
-        print(f"  {Colors.BOLD}{top[0]}{Colors.ENDC} - {Colors.OKGREEN}{top[1]['TOTAL SCORE']}%{Colors.ENDC}")
+        logger.info(f"\n{Colors.OKGREEN}🏆 Top Performing Repo:{Colors.ENDC}")
+        logger.info(f"  {Colors.BOLD}{top[0]}{Colors.ENDC} - {Colors.OKGREEN}{top[1]['TOTAL SCORE']}%{Colors.ENDC}")
         if len(sorted_repos) > 1:
             bottom = sorted_repos[-1]
-            print(f"\n{Colors.WARNING}📈 Needs Improvement:{Colors.ENDC}")
-            print(f"  {Colors.BOLD}{bottom[0]}{Colors.ENDC} - {Colors.WARNING}{bottom[1]['TOTAL SCORE']}%{Colors.ENDC}")
+            logger.info(f"\n{Colors.WARNING}📈 Needs Improvement:{Colors.ENDC}")
+            logger.info(f"  {Colors.BOLD}{bottom[0]}{Colors.ENDC} - {Colors.WARNING}{bottom[1]['TOTAL SCORE']}%{Colors.ENDC}")
         avg_score = round(sum(r["TOTAL SCORE"] for r in results.values())/len(results),1)
-        print(f"\n{Colors.OKCYAN}📊 Portfolio Average:{Colors.ENDC} {avg_score}%")
+        logger.info(f"\n{Colors.OKCYAN}📊 Portfolio Average:{Colors.ENDC} {avg_score}%")
     
-    print(f"{Colors.HEADER}{'='*60}{Colors.ENDC}")
+    logger.info(f"{Colors.HEADER}{'='*60}{Colors.ENDC}")
     
     report = {
         "scan_date": datetime.now().isoformat(),
@@ -304,7 +324,7 @@ def main():
     with open(REPORT_PATH, "w") as f:
         json.dump(report, f, indent=2)
     
-    print(f"\n{Colors.OKGREEN}✅ Full report saved to:{Colors.ENDC} {REPORT_PATH}\n")
+    logger.info(f"\n{Colors.OKGREEN}✅ Full report saved to:{Colors.ENDC} {REPORT_PATH}\n")
 
 if __name__ == "__main__":
     main()

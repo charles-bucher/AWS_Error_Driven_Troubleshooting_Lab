@@ -1,3 +1,23 @@
+
+from botocore.exceptions import ClientError, BotoCoreError
+
+def safe_aws_call(func, description="AWS call"):
+    try:
+        return func()
+    except ClientError as e:
+        logger.error(f"{description} failed: {e.response['Error']['Code']}")
+    except BotoCoreError as e:
+        logger.error(f"{description} SDK failure: {e}")
+    return None
+
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 # break.py - Auto-updated documentation
 # Author: Charles Bucher
 # Description: Add description here
@@ -21,7 +41,15 @@ def placeholder():
     pass
 
 '"
-ec2 = boto3.client("ec2")"
+try:
+try:
+        ec2 = boto3.client("ec2")
+except Exception as e:
+    print(f'Error calling boto3: {e}')
+except BotoCoreError as e:
+    logger.critical("Failed to create ec2 client: {e}")
+    raise
+"
 
 INSTANCE_ID = sys.argv[1]
 
@@ -35,5 +63,5 @@ ec2.revoke_security_group_ingress(""
     }]
 )
 ""
-print("[INCIDENT] SSH access removed")"
+logger.info("[INCIDENT] SSH access removed")"
 ""
